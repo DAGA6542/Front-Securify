@@ -9,10 +9,12 @@ import {
   MatDatepickerToggle
 } from '@angular/material/datepicker';
 import {MatButton} from '@angular/material/button';
-import {MatNativeDateModule, MatOption} from '@angular/material/core';
+import {MatNativeDateModule} from '@angular/material/core';
 import {ProductoService} from '../../services/producto-service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Producto} from '../../model/producto';
+import {Categoria} from '../../model/categoria';
+import {Tienda} from '../../model/tienda';
 
 @Component({
   selector: 'app-producto-nuevo-edit-component',
@@ -32,9 +34,7 @@ import {Producto} from '../../model/producto';
     MatHint,//add
     MatInputModule,//add
     MatDatepickerModule, // add
-    MatNativeDateModule,
-    MatOption,
-    // add
+    MatNativeDateModule, // add
   ],
   templateUrl: './producto-nuevo-edit-component.html',
   styleUrl: './producto-nuevo-edit-component.css'
@@ -55,7 +55,8 @@ export class ProductoNuevoEditComponent {
       descripcion : ['', Validators.required],
       precio: ['', Validators.required],
       stock: ['', Validators.required],
-      id_categoria : ['', [Validators.required]],
+      id_categoria : [''],
+      id_tienda : [''],
     });
   }
 
@@ -77,7 +78,9 @@ export class ProductoNuevoEditComponent {
           descripcion:data.descripcion,
           precio:data.precio,
           stock:data.stock,
-          id_categoria:data.id_categoria
+          //id_categoria:data.id_categoria
+          id_categoria: data.id_categoria ? data.id_categoria.idCategoria : null,
+          id_tienda: data.id_tienda ? data.id_tienda.idTienda : null
         });
       })
     }
@@ -87,11 +90,20 @@ export class ProductoNuevoEditComponent {
     if(this.productoForm.valid){
       const producto : Producto = new Producto();
       producto.idProducto = this.id;
+
       producto.nombre = this.productoForm.value.nombre;
       producto.precio = this.productoForm.value.precio;
       producto.descripcion = this.productoForm.value.descripcion;
       producto.stock = this.productoForm.value.stock;
-      producto.id_categoria = this.productoForm.value.id_categoria;
+
+      const categoriaProducto = new Categoria();
+      categoriaProducto.idCategoria = this.productoForm.value.id_categoria;
+      producto.id_categoria = categoriaProducto;
+
+      const tiendaProducto = new Tienda();
+      tiendaProducto.idTienda = this.productoForm.value.id_tienda;
+      producto.id_tienda = tiendaProducto;
+
       if(!this.edicion){
         console.log("Datos leidos del form:", producto);
         this.productoService.insert(producto).subscribe((data) => {
@@ -99,6 +111,12 @@ export class ProductoNuevoEditComponent {
           this.productoService.actualizarLista();
           console.log("Lista Actualizada");
         });
+      }else{
+        console.log("Datos leidos del form:", producto);
+        this.productoService.update(producto).subscribe((data) => {
+          this.productoService.actualizarLista();
+          console.log("Lista Actualizada", data);
+        })
       }
       this.router.navigate(['productos']);
     }
@@ -107,4 +125,3 @@ export class ProductoNuevoEditComponent {
     }
   }
 }
-

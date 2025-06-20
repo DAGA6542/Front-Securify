@@ -26,7 +26,15 @@
         <input  matInput  formControlName="stock" placeholder="Ingrese el stock" />
       </mat-form-field>
 
+      <mat-form-field appearance="fill">
+        <mat-label>Categoría</mat-label>
+        <input matInput formControlName="id_categoria" readonly />
+      </mat-form-field>
 
+      <mat-form-field appearance="fill">
+        <mat-label>Categoría</mat-label>
+        <input matInput formControlName="id_tienda" readonly />
+      </mat-form-field>
 
       <button type="submit" mat-raised-button color="primary">Registrar</button>
     </form>

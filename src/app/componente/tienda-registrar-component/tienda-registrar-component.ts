@@ -1,0 +1,79 @@
+import {Component, inject} from '@angular/core';
+import {MatButton} from '@angular/material/button';
+import {MatCard, MatCardContent, MatCardTitle} from '@angular/material/card';
+import {MatFormField, MatInput, MatLabel} from '@angular/material/input';
+import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
+import {MatSelect} from '@angular/material/select';
+import {MatOption} from '@angular/material/core';
+import {CategoriaService} from '../../services/categoria-service';
+import {Router} from '@angular/router';
+import {Categoria} from '../../model/categoria';
+import {TiendaService} from '../../services/tienda-service';
+import {Tienda} from '../../model/tienda';
+
+@Component({
+  selector: 'app-tienda-registrar-component',
+  imports: [
+    MatCard,
+    MatCardTitle,
+    MatCardContent,
+    ReactiveFormsModule,
+    MatFormField,
+    MatLabel,
+    MatSelect,
+    MatOption,
+    MatInput,
+    MatButton
+  ],
+  templateUrl: './tienda-registrar-component.html',
+  styleUrl: './tienda-registrar-component.css'
+})
+export class TiendaRegistrarComponent {
+
+  tiendaForm: FormGroup;
+  fb = inject(FormBuilder);
+  tiendaService: TiendaService = inject(TiendaService);
+  router = inject(Router);
+  lista: Tienda[] = [];
+  //tipoProducto: TipoProducto = new TipoProducto();
+  constructor() {
+    this.tiendaForm = this.fb.group({
+      idTienda: [''],
+      nombre: ['', Validators.required],
+      descripcion: ['', Validators.required],
+    })
+  }
+  ngOnInit(): void {
+    this.tiendaService.list().subscribe({
+      next: (data: Tienda[]) => {
+        this.lista= data;
+      },
+      error: (error) => {
+        console.log(error);
+      }
+    })
+  }
+
+  onSubmit(): void {
+    if(this.tiendaForm.valid){
+      const tienda:Tienda = new Tienda();
+      //categoria.idCategoria = this.categoriaForm.controls['idCategoria'].value;
+      tienda.nombre = this.tiendaForm.controls['nombre'].value;
+      tienda.descripcion = this.tiendaForm.controls['descripcion'].value;
+      //categoria.tipoProducto.id = this.productoForm.value.tipoProducto;
+      console.log("Tienda a enviar:", tienda);
+
+      this.tiendaService.insert(tienda).subscribe({
+        next: (data:Object) => {
+          alert("Tienda Registrada!");
+          console.log(data);
+          this.tiendaService.actualizarLista();
+        }
+      });
+      this.router.navigate(['']);
+    }else {
+      alert("Formulario invalido!");
+      console.log("Formulario invalido");
+    }
+  }
+}
