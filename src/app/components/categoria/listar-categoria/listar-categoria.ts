@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
+import {Component, inject, ViewChild} from '@angular/core';
 import {DatePipe} from '@angular/common';
-import {RouterLink} from '@angular/router';
+import {Router, RouterLink} from '@angular/router';
+import {Categoria} from '../../../model/categoria';
+import {CategoriaService} from '../../../services/categoria.service';
 
 @Component({
   selector: 'app-listar-categoria',
@@ -28,4 +30,35 @@ import {RouterLink} from '@angular/router';
 })
 export class ListarCategoria {
 
+  lista: Categoria[]=[];
+  displayedColumns: string[]=['categoria_id', 'nombre', 'descripcion', 'Accion01', 'Accion02'];
+  dataSource: MatTableDataSource<Categoria> = new MatTableDataSource<Categoria>();
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
+  categoriaService: CategoriaService = inject(CategoriaService);
+  route:Router = inject(Router);
+  constructor() {
+    console.log("Constructor")
+  }
+  ngAfterViewInit() {
+    this.dataSource.sort = this.sort;
+    this.dataSource.paginator = this.paginator;
+  }
+  ngOnInit() {
+
+    this.categoriaService.list().subscribe({next: data => this.dataSource.data = data,
+      error: error => console.log(error)});
+  }
+
+  eliminar(id: number) {
+    this.categoriaService.delete(id).subscribe({
+      next: () => {
+        this.categoriaService.actualizarLista();
+      },
+
+    });
+  }
+
 }
+
+
