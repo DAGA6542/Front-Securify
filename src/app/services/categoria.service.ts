@@ -1,15 +1,14 @@
 import {inject, Injectable} from '@angular/core';
-import {environment} from '../../environments/environment';
 import {HttpClient} from '@angular/common/http';
 import {Observable, Subject} from 'rxjs';
 import {Categoria} from '../model/categoria';
+import {environments} from '../../environments/environments';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CategoriaService {
-
-  private url: string = environment.apiURL;
+  private url: string = environments.apiUrl;
   private httpClient: HttpClient = inject(HttpClient);
   private listaCambio: Subject<Categoria[]> = new Subject<Categoria[]>();
 
