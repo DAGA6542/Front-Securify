@@ -1,6 +1,5 @@
 import {inject, Injectable} from '@angular/core';
 import {Observable, Subject} from 'rxjs';
-import {Producto} from '../model/producto';
 import {environments} from '../../environments/environments';
 import {HttpClient} from '@angular/common/http';
 import {Tienda} from '../model/tienda';
@@ -12,7 +11,7 @@ export class TiendaService {
 
   private url: string = environments.apiUrl;
   private httpClient: HttpClient = inject(HttpClient);
-  private listaCambio: Subject<Producto[]> = new Subject<Producto[]>();
+  private listaCambio: Subject<Tienda[]> = new Subject<Tienda[]>();
 
   constructor() { }
 
