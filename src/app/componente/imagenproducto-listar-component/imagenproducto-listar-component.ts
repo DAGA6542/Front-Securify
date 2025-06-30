@@ -13,11 +13,11 @@ import {MatSort, MatSortHeader} from '@angular/material/sort';
 import {DatePipe} from '@angular/common';
 import {MatButton} from '@angular/material/button';
 import {Router, RouterLink} from '@angular/router';
-import {Producto} from '../../model/producto';
-import {ProductoService} from '../../services/producto-service';
+import {Imagenproducto} from '../../model/imagenproducto';
+import {ImagenproductoService} from '../../services/imagenproducto-service';
 
 @Component({
-  selector: 'app-producto-listar-component',
+  selector: 'app-imagenproducto-listar-component',
   imports: [
     MatTable,
     MatCellDef,
@@ -36,17 +36,17 @@ import {ProductoService} from '../../services/producto-service';
     MatButton,
     RouterLink
   ],
-  templateUrl: './producto-listar-component.html',
-  styleUrl: './producto-listar-component.css'
+  templateUrl: './imagenproducto-listar-component.html',
+  styleUrl: './imagenproducto-listar-component.css'
 })
-export class ProductoListarComponent {
+export class ImagenproductoListarComponent {
 
-  lista: Producto[]=[];
-  displayedColumns: string[]=['idProducto', 'nombre', 'descripcion', 'precio', 'stock', 'id_categoria', 'id_tienda', 'Accion01', 'Accion02'];
-  dataSource: MatTableDataSource<Producto> = new MatTableDataSource<Producto>();
+  lista: Imagenproducto[]=[];
+  displayedColumns: string[]=['idImagenProducto', 'urlImagen', 'id_producto', 'Accion01', 'Accion02'];
+  dataSource: MatTableDataSource<Imagenproducto> = new MatTableDataSource<Imagenproducto>();
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
-  productoService: ProductoService = inject(ProductoService);
+  imagenproductoService: ImagenproductoService = inject(ImagenproductoService);
   route:Router = inject(Router);
   constructor() {
     console.log("Constructor")
@@ -56,14 +56,14 @@ export class ProductoListarComponent {
     this.dataSource.paginator = this.paginator;
   }
   ngOnInit() {
-    this.productoService.list().subscribe({next: data => this.dataSource.data = data,
+    this.imagenproductoService.list().subscribe({next: data => this.dataSource.data = data,
       error: error => console.log(error)});
   }
 
   eliminar(id: number) {
-    this.productoService.delete(id).subscribe({
+    this.imagenproductoService.delete(id).subscribe({
       next: () => {
-        this.productoService.actualizarLista();
+        this.imagenproductoService.actualizarLista();
       },
 
     });

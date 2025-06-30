@@ -5,11 +5,11 @@ import {MatFormField, MatInput, MatLabel} from '@angular/material/input';
 import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {MatSelect} from '@angular/material/select';
 import {MatOption} from '@angular/material/core';
-import {CategoriaService} from '../../services/categoria-service';
+import {CategoriaService} from '../../../services/categoria-service';
 import {Router} from '@angular/router';
-import {Categoria} from '../../model/categoria';
-import {TiendaService} from '../../services/tienda-service';
-import {Tienda} from '../../model/tienda';
+import {Categoria} from '../../../model/categoria';
+import {TiendaService} from '../../../services/tienda-service';
+import {Tienda} from '../../../model/tienda';
 
 @Component({
   selector: 'app-tienda-registrar-component',

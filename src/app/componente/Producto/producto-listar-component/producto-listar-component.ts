@@ -13,41 +13,40 @@ import {MatSort, MatSortHeader} from '@angular/material/sort';
 import {DatePipe} from '@angular/common';
 import {MatButton} from '@angular/material/button';
 import {Router, RouterLink} from '@angular/router';
-import {Categoria} from '../../model/categoria';
-import {CategoriaService} from '../../services/categoria-service';
+import {Producto} from '../../../model/producto';
+import {ProductoService} from '../../../services/producto-service';
 
 @Component({
-  selector: 'app-categoria-listar-component',
+  selector: 'app-producto-listar-component',
   imports: [
     MatTable,
-    MatColumnDef,
-    MatHeaderRowDef,
-    MatRowDef,
-    DatePipe,
-    MatSort,
-    MatSortHeader,
-    MatButton,
-    RouterLink,
     MatCellDef,
     MatHeaderCellDef,
     MatHeaderCell,
     MatCell,
     MatColumnDef,
+    MatPaginator,
+    MatHeaderRowDef,
+    MatRowDef,
+    MatSort,
     MatHeaderRow,
     MatRow,
-    MatPaginator
+    DatePipe,
+    MatSortHeader,
+    MatButton,
+    RouterLink
   ],
-  templateUrl: './categoria-listar-component.html',
-  styleUrl: './categoria-listar-component.css'
+  templateUrl: './producto-listar-component.html',
+  styleUrl: './producto-listar-component.css'
 })
-export class CategoriaListarComponent {
+export class ProductoListarComponent {
 
-  lista: Categoria[]=[];
-  displayedColumns: string[]=['idCategoria', 'nombre', 'descripcion', 'Accion01', 'Accion02'];
-  dataSource: MatTableDataSource<Categoria> = new MatTableDataSource<Categoria>();
+  lista: Producto[]=[];
+  displayedColumns: string[]=['idProducto', 'nombre', 'descripcion', 'precio', 'stock', 'id_categoria', 'id_tienda', 'Accion01', 'Accion02'];
+  dataSource: MatTableDataSource<Producto> = new MatTableDataSource<Producto>();
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
-  categoriaService: CategoriaService = inject(CategoriaService);
+  productoService: ProductoService = inject(ProductoService);
   route:Router = inject(Router);
   constructor() {
     console.log("Constructor")
@@ -57,18 +56,16 @@ export class CategoriaListarComponent {
     this.dataSource.paginator = this.paginator;
   }
   ngOnInit() {
-
-    this.categoriaService.list().subscribe({next: data => this.dataSource.data = data,
+    this.productoService.list().subscribe({next: data => this.dataSource.data = data,
       error: error => console.log(error)});
   }
 
   eliminar(id: number) {
-    this.categoriaService.delete(id).subscribe({
+    this.productoService.delete(id).subscribe({
       next: () => {
-        this.categoriaService.actualizarLista();
+        this.productoService.actualizarLista();
       },
 
     });
   }
 }
-

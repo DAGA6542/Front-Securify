@@ -13,10 +13,10 @@ import {DatePipe} from '@angular/common';
 import {MatSort, MatSortHeader} from '@angular/material/sort';
 import {Router, RouterLink} from '@angular/router';
 import {MatPaginator} from '@angular/material/paginator';
-import {Categoria} from '../../model/categoria';
-import {CategoriaService} from '../../services/categoria-service';
-import {Tienda} from '../../model/tienda';
-import {TiendaService} from '../../services/tienda-service';
+import {Categoria} from '../../../model/categoria';
+import {CategoriaService} from '../../../services/categoria-service';
+import {Tienda} from '../../../model/tienda';
+import {TiendaService} from '../../../services/tienda-service';
 
 @Component({
   selector: 'app-tienda-listar-component',

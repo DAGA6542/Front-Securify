@@ -10,11 +10,11 @@ import {
 } from '@angular/material/datepicker';
 import {MatButton} from '@angular/material/button';
 import {MatNativeDateModule} from '@angular/material/core';
-import {ProductoService} from '../../services/producto-service';
+import {ProductoService} from '../../../services/producto-service';
 import {ActivatedRoute, Router} from '@angular/router';
-import {Producto} from '../../model/producto';
-import {Categoria} from '../../model/categoria';
-import {Tienda} from '../../model/tienda';
+import {Producto} from '../../../model/producto';
+import {Categoria} from '../../../model/categoria';
+import {Tienda} from '../../../model/tienda';
 
 @Component({
   selector: 'app-producto-nuevo-edit-component',

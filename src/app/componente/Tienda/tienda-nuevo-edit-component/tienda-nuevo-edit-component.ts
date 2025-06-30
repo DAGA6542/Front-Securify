@@ -1,10 +1,8 @@
 import {Component, inject} from '@angular/core';
-import {FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
 import {MatButton} from "@angular/material/button";
 import {MatCard, MatCardContent, MatCardTitle} from "@angular/material/card";
 import {MatFormField, MatHint, MatInput, MatInputModule, MatLabel} from "@angular/material/input";
-import {Producto} from '../../model/producto';
-import {MatTableDataSource} from '@angular/material/table';
+import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 import {
   MatDatepicker,
   MatDatepickerInput,
@@ -13,11 +11,13 @@ import {
 } from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
 import {ActivatedRoute, Router, RouterLink} from '@angular/router';
-import {CategoriaService} from '../../services/categoria-service';
-import {Categoria} from '../../model/categoria';
+import {CategoriaService} from '../../../services/categoria-service';
+import {Categoria} from '../../../model/categoria';
+import {TiendaService} from '../../../services/tienda-service';
+import {Tienda} from '../../../model/tienda';
 
 @Component({
-  selector: 'app-categoria-nuevo-edit-component',
+  selector: 'app-tienda-nuevo-edit-component',
   imports: [
     MatCard,
     MatCardTitle,
@@ -35,24 +35,24 @@ import {Categoria} from '../../model/categoria';
     MatInputModule,//add
     MatDatepickerModule, // add
     MatNativeDateModule,
-    RouterLink,
-    // add
+    RouterLink
   ],
-  templateUrl: './categoria-nuevo-edit-component.html',
-  styleUrl: './categoria-nuevo-edit-component.css'
+  templateUrl: './tienda-nuevo-edit-component.html',
+  styleUrl: './tienda-nuevo-edit-component.css'
 })
-export class CategoriaNuevoEditComponent {
-  categoriaForm : FormGroup;
+export class TiendaNuevoEditComponent {
+
+  tiendaForm : FormGroup;
   fb : FormBuilder = inject(FormBuilder)
-  categoriaService = inject(CategoriaService);
+  tiendaService = inject(TiendaService);
   router = inject(Router);
   edicion : boolean = false;
   route : ActivatedRoute = inject(ActivatedRoute);
   id: number = 0;
 
   constructor() {
-    this.categoriaForm = this.fb.group({
-      idCategoria: [''],
+    this.tiendaForm = this.fb.group({
+      idTienda: [''],
       nombre : ['', Validators.required],
       descripcion : ['', Validators.required],
     });
@@ -69,9 +69,9 @@ export class CategoriaNuevoEditComponent {
 
   cargaForm(){
     if(this.edicion){
-      this.categoriaService.listId(this.id).subscribe((data:Categoria) => {
+      this.tiendaService.listId(this.id).subscribe((data:Tienda) => {
         console.log(data);
-        this.categoriaForm.patchValue({
+        this.tiendaForm.patchValue({
           nombre:data.nombre,
           descripcion:data.descripcion,
         });
@@ -80,22 +80,22 @@ export class CategoriaNuevoEditComponent {
   }
 
   onSubmit(){
-    if(this.categoriaForm.valid){
-      const categoria : Categoria = new Categoria();
-      categoria.idCategoria = this.id;
-      categoria.nombre = this.categoriaForm.value.nombre;
-      categoria.descripcion = this.categoriaForm.value.descripcion;
+    if(this.tiendaForm.valid){
+      const tienda : Tienda = new Tienda();
+      tienda.idTienda = this.id;
+      tienda.nombre = this.tiendaForm.value.nombre;
+      tienda.descripcion = this.tiendaForm.value.descripcion;
       if(!this.edicion){
-        console.log("Datos leidos del form:", categoria);
-        this.categoriaService.insert(categoria).subscribe((data) => {
+        console.log("Datos leidos del form:", tienda);
+        this.tiendaService.insert(tienda).subscribe((data) => {
           console.log(data);
-          this.categoriaService.actualizarLista();
+          this.tiendaService.actualizarLista();
           console.log("Lista Actualizada");
         });
       }else{
-        console.log("Datos leidos del form:", categoria);
-        this.categoriaService.update(categoria).subscribe((data) => {
-          this.categoriaService.actualizarLista();
+        console.log("Datos leidos del form:", tienda);
+        this.tiendaService.update(tienda).subscribe((data) => {
+          this.tiendaService.actualizarLista();
           console.log("Lista Actualizada", data);
         })
       }
@@ -105,8 +105,4 @@ export class CategoriaNuevoEditComponent {
       console.log("Formulario no valido");
     }
   }
-
-
-
 }
-

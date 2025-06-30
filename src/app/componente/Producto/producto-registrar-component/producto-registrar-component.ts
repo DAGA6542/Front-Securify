@@ -5,13 +5,13 @@ import {MatFormField, MatInput, MatLabel} from '@angular/material/input';
 import {MatSelect} from '@angular/material/select';
 import {MatOption} from '@angular/material/core';
 import {MatButton} from '@angular/material/button';
-import {ProductoService} from '../../services/producto-service';
+import {ProductoService} from '../../../services/producto-service';
 import {Router} from '@angular/router';
-import {CategoriaService} from '../../services/categoria-service';
-import {Categoria} from '../../model/categoria';
-import {Producto} from '../../model/producto';
-import {Tienda} from '../../model/tienda';
-import {TiendaService} from '../../services/tienda-service';
+import {CategoriaService} from '../../../services/categoria-service';
+import {Categoria} from '../../../model/categoria';
+import {Producto} from '../../../model/producto';
+import {Tienda} from '../../../model/tienda';
+import {TiendaService} from '../../../services/tienda-service';
 
 @Component({
   selector: 'app-producto-registrar-component',

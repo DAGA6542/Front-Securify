@@ -5,9 +5,9 @@ import {MatOption} from '@angular/material/core';
 import {MatSelect} from '@angular/material/select';
 import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {MatCard, MatCardContent, MatCardTitle} from '@angular/material/card';
-import {CategoriaService} from '../../services/categoria-service';
+import {CategoriaService} from '../../../services/categoria-service';
 import {Router} from '@angular/router';
-import {Categoria} from '../../model/categoria';
+import {Categoria} from '../../../model/categoria';
 
 @Component({
   selector: 'app-categoria-registrar-component',
