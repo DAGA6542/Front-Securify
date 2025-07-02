@@ -9,7 +9,7 @@ export const guardianGuard: CanActivateFn = (route, state) => {
   if (loginService.getToken()!=null) {
     return true;
   } else {
-    router.navigate(['/login']);
+    router.navigate(['/authenticate']);
     return false;
   }
 };

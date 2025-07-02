@@ -1,10 +1,10 @@
 import {Component, inject} from '@angular/core';
-import {Router} from '@angular/router';
+import {Router, RouterLink} from '@angular/router';
 import {LoginService} from '../../services/login.service';
 import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {RequestDto} from '../../model/request.dto';
 import {ResponseDto} from '../../model/response.dto';
-import {MatCard, MatCardContent, MatCardTitle} from '@angular/material/card';
+import {MatCard, MatCardContent, MatCardHeader, MatCardTitle} from '@angular/material/card';
 import {MatFormField, MatInput, MatLabel} from '@angular/material/input';
 import {MatButton} from '@angular/material/button';
 
@@ -18,7 +18,10 @@ import {MatButton} from '@angular/material/button';
     MatFormField,
     MatInput,
     MatButton,
-    MatLabel
+    MatLabel,
+    MatCardHeader,
+    RouterLink,
+
   ],
   templateUrl: './login.html',
   styleUrl: './login.css'
@@ -49,6 +52,7 @@ export class Login {
       requestDto.username = this.loginForm.controls['username'].value;
       requestDto.password = this.loginForm.controls['password'].value;
       let responseDto = new ResponseDto();
+
       this.loginService.login(requestDto).subscribe({
         next: (data: ResponseDto) => {
           console.log("Login response ROLS:", data.roles);

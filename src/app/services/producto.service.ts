@@ -46,4 +46,8 @@ export class ProductoService {
       error: (err) => console.error('Error actualizando lista', err)
     });
   }
+
+  buscarPorNombre(termino: any) {
+    
+  }
 }
