@@ -23,7 +23,6 @@ import {InsertarCategoria} from './components/categoria/insertar-categoria/inser
 import {ListarCategoria} from './components/categoria/listar-categoria/listar-categoria';
 
 export const routes: Routes = [
-  {path: 'authenticate', component: Login},
   {path: 'producto', component: Producto},
   {path: 'producto/insertar', component: InsertarProducto},
   {path: 'producto/listar', component: ListarProducto},
@@ -45,5 +44,6 @@ export const routes: Routes = [
   {path: 'categoria', component: Categoria},
   {path: 'categoria/insertar', component: InsertarCategoria},
   {path: 'categoria/listar', component: ListarCategoria},
-
+  {path: 'login', component: Login},
+  {path: '', component: Login},
 ];

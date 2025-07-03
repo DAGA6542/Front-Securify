@@ -9,4 +9,13 @@ import {RouterLink, RouterOutlet} from '@angular/router';
 })
 export class App {
   protected title = 'Front-Securify';
+
+  esUsuario(){
+    let ok=false;
+    let rol=localStorage.getItem('rol');
+    if(rol == "ROLE_USER"){
+      ok=true;
+    }
+    return ok;
+  }
 }
