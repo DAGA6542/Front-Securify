@@ -3,5 +3,4 @@ export class Registro {
   correo: String;
   password: String;
   confirmar: String;
-
 }
