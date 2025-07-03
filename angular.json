@@ -83,8 +83,7 @@
               }
             ],
             "styles": [
-              "@angular/material/prebuilt-themes/azure-blue.css",
-              "src/styles.css"
+              "@angular/material/prebuilt-themes/rose-red.css"
             ]
           }
         }
@@ -95,3 +94,4 @@
     "analytics": "7dbd839d-23ad-4708-8c15-1785660ff498"
   }
 }
+

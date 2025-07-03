@@ -1,0 +1,42 @@
+<mat-toolbar color="primary" >
+  <mat-toolbar-row>
+
+    <span> Bienvenido a Securify </span>
+    @if (esUsuario() || esAdministrador()|| esVendedor()){
+
+      <span class="spacer"></span>
+      <mat-form-field class="buscador" appearance="fill">
+        <mat-label>Buscar productos</mat-label>
+        <input matInput />
+        <button mat-icon-button matSuffix disabled>
+          <mat-icon>search</mat-icon>
+        </button>
+      </mat-form-field>
+      <span class="spacer"></span>
+
+      <button mat-raised-button [routerLink]="'/home'">Home</button>
+    }
+
+    @if (esAdministrador()){
+      <button mat-raised-button [routerLink]="'/tienda/listar'">Proveedores</button>
+
+    }
+    @if (esUsuario()){
+      <button mat-raised-button [routerLink]="'/producto'">Productos</button>
+      <button mat-raised-button [routerLink]="'/detalleorden'">Orden</button>
+      <button mat-raised-button [routerLink]="'/categoria'">Categoria</button>
+          }
+    @if (esVendedor()){
+      <button mat-raised-button [routerLink]="'/producto/insertar'">Agregar Producto</button>
+      <button mat-raised-button [routerLink]="'/detalleorden'">Orden</button>
+      <button mat-raised-button [routerLink]="'/categoria'">Categoria</button>
+    }
+    @if (esUsuario() || esAdministrador()|| esVendedor()){
+      <button mat-raised-button [routerLink]="'/login'" color="warn">Logout</button>
+
+    }
+
+
+  </mat-toolbar-row>
+</mat-toolbar>
+
