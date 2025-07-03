@@ -18,10 +18,6 @@ export class CategoriaService {
     return this.httpClient.get<Categoria[]>(this.url + "categoria/listacategoria");
   }
 
-  listId(id: number): Observable<any> {
-    console.log(this.url + "categoria/buscacategoria/"+ id);
-    return this.httpClient.get<Categoria>(this.url+"categoria/buscacategoria/"+id);
-  }
   insert(categoria:Categoria){
     console.log(categoria);
     return this.httpClient.post(this.url+"categoria/insertcategoria", categoria);
