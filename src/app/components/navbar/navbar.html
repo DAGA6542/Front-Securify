@@ -19,6 +19,8 @@
 
     @if (esAdministrador()){
       <button mat-raised-button [routerLink]="'/tienda/listar'">Proveedores</button>
+      <button mat-raised-button [routerLink]="'/categoria/listar'">Categoria</button>
+      <button mat-raised-button [routerLink]="'/categoria'">Categoria</button>
 
     }
     @if (esUsuario()){
