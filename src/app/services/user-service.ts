@@ -2,42 +2,42 @@ import {inject, Injectable} from '@angular/core';
 import {environment} from '../../environments/environment';
 import {HttpClient} from '@angular/common/http';
 import {Observable, Subject} from 'rxjs';
-import {Producto} from '../model/producto';
 import {Tienda} from '../model/tienda';
+import {User} from '../model/user';
 
 @Injectable({
   providedIn: 'root'
 })
-export class TiendaService {
+export class UserService {
 
   private url = environment.apiURL;
   private httpClient: HttpClient = inject(HttpClient);
-  private listaCambio: Subject<Tienda[]> = new Subject<Tienda[]>();
+  private listaCambio: Subject<User[]> = new Subject<User[]>();
 
   constructor() { }
 
   list(): Observable<any>{
-    return this.httpClient.get<Tienda[]>(this.url + "tienda/listatienda");
+    return this.httpClient.get<User[]>(this.url + "user/listausers");
   }
   listId(id: number): Observable<any> {
-    console.log(this.url + "tienda/buscatienda/"+ id);
-    return this.httpClient.get<Tienda>(this.url+"tienda/listatienda/"+id);
+    console.log(this.url + "user/buscauser/"+ id);
+    return this.httpClient.get<User>(this.url+"user/buscauser/"+id);
   }
-  insert(tienda:Tienda): Observable<any>{
-    console.log(tienda);
-    return this.httpClient.post(this.url+"tienda/posttienda", tienda);
+  insert(user:User): Observable<any>{
+    console.log(user);
+    return this.httpClient.post(this.url+"tiendas/insertaruser", user);
   }
 
-  update(tienda: Tienda): Observable<any>{
-    return this.httpClient.put(this.url + "tienda/actualizartienda", tienda);
+  update(user: User): Observable<any>{
+    return this.httpClient.put(this.url + "tiendas/actualizaruser", user);
   }
   delete(id: number): Observable<any>{
-    return this.httpClient.delete(this.url + "tienda/deletetienda/" + id);
+    return this.httpClient.delete(this.url + "tiendas/eliminaruser/" + id);
   }
-  setList(listaNueva: Tienda[]) {
+  setList(listaNueva: User[]) {
     this.listaCambio.next(listaNueva); //envia la nueva lista a los suscriptores
   }
-  getListaCambio(): Observable<Tienda[]>{
+  getListaCambio(): Observable<User[]>{
     return this.listaCambio.asObservable();
   }
   actualizarLista(): void {

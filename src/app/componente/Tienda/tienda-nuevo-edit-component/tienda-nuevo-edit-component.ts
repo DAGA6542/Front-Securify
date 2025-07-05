@@ -9,12 +9,15 @@ import {
   MatDatepickerModule,
   MatDatepickerToggle
 } from '@angular/material/datepicker';
-import {MatNativeDateModule} from '@angular/material/core';
+import {MatNativeDateModule, MatOption} from '@angular/material/core';
 import {ActivatedRoute, Router, RouterLink} from '@angular/router';
 import {CategoriaService} from '../../../services/categoria-service';
 import {Categoria} from '../../../model/categoria';
 import {TiendaService} from '../../../services/tienda-service';
 import {Tienda} from '../../../model/tienda';
+import {ProductoService} from '../../../services/producto-service';
+import {Producto} from '../../../model/producto';
+import {User} from '../../../model/user';
 
 @Component({
   selector: 'app-tienda-nuevo-edit-component',
@@ -35,7 +38,8 @@ import {Tienda} from '../../../model/tienda';
     MatInputModule,//add
     MatDatepickerModule, // add
     MatNativeDateModule,
-    RouterLink
+    RouterLink,
+    MatOption,
   ],
   templateUrl: './tienda-nuevo-edit-component.html',
   styleUrl: './tienda-nuevo-edit-component.css'
@@ -52,9 +56,10 @@ export class TiendaNuevoEditComponent {
 
   constructor() {
     this.tiendaForm = this.fb.group({
-      idTienda: [''],
+      tienda_id: [''],
       nombre : ['', Validators.required],
       descripcion : ['', Validators.required],
+      user_id : [''],
     });
   }
 
@@ -74,6 +79,7 @@ export class TiendaNuevoEditComponent {
         this.tiendaForm.patchValue({
           nombre:data.nombre,
           descripcion:data.descripcion,
+          user_id: data.user_id ? data.user_id.user_id : null
         });
       })
     }
@@ -82,9 +88,15 @@ export class TiendaNuevoEditComponent {
   onSubmit(){
     if(this.tiendaForm.valid){
       const tienda : Tienda = new Tienda();
-      tienda.idTienda = this.id;
+     tienda.tienda_id = this.id;
+
       tienda.nombre = this.tiendaForm.value.nombre;
       tienda.descripcion = this.tiendaForm.value.descripcion;
+
+      const userTienda = new User();
+      userTienda.user_id = this.tiendaForm.value.user_id;
+      tienda.user_id = userTienda;
+
       if(!this.edicion){
         console.log("Datos leidos del form:", tienda);
         this.tiendaService.insert(tienda).subscribe((data) => {
@@ -99,7 +111,7 @@ export class TiendaNuevoEditComponent {
           console.log("Lista Actualizada", data);
         })
       }
-      this.router.navigate(['categorias']);
+      this.router.navigate(['tiendas']);
     }
     else{
       console.log("Formulario no valido");

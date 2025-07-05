@@ -3,11 +3,11 @@ import {Tienda} from './tienda';
 
 export class Producto {
 
-  idProducto : number;
+  producto_id : number;
   nombre : string;
   descripcion : string;
   precio : number;
   stock : number;
-  id_categoria : Categoria;
-  id_tienda : Tienda;
+  categoria_id : Categoria;
+  tienda_id : Tienda;
 }

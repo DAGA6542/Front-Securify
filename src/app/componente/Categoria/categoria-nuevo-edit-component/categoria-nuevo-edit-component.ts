@@ -52,7 +52,7 @@ export class CategoriaNuevoEditComponent {
 
   constructor() {
     this.categoriaForm = this.fb.group({
-      idCategoria: [''],
+      categoria_id: [''],
       nombre : ['', Validators.required],
       descripcion : ['', Validators.required],
     });
@@ -82,7 +82,7 @@ export class CategoriaNuevoEditComponent {
   onSubmit(){
     if(this.categoriaForm.valid){
       const categoria : Categoria = new Categoria();
-      categoria.idCategoria = this.id;
+      categoria.categoria_id = this.id;
       categoria.nombre = this.categoriaForm.value.nombre;
       categoria.descripcion = this.categoriaForm.value.descripcion;
       if(!this.edicion){
@@ -109,4 +109,3 @@ export class CategoriaNuevoEditComponent {
 
 
 }
-

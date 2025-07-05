@@ -20,32 +20,32 @@ import {TiendaService} from '../../../services/tienda-service';
 
 @Component({
   selector: 'app-tienda-listar-component',
-  imports: [
-    MatTable,
-    MatColumnDef,
-    MatHeaderRowDef,
-    MatRowDef,
-    DatePipe,
-    MatSort,
-    MatSortHeader,
-    MatButton,
-    RouterLink,
-    MatCellDef,
-    MatHeaderCellDef,
-    MatHeaderCell,
-    MatCell,
-    MatColumnDef,
-    MatHeaderRow,
-    MatRow,
-    MatPaginator
-  ],
+    imports: [
+      MatTable,
+      MatColumnDef,
+      MatHeaderRowDef,
+      MatRowDef,
+      DatePipe,
+      MatSort,
+      MatSortHeader,
+      MatButton,
+      RouterLink,
+      MatCellDef,
+      MatHeaderCellDef,
+      MatHeaderCell,
+      MatCell,
+      MatColumnDef,
+      MatHeaderRow,
+      MatRow,
+      MatPaginator
+    ],
   templateUrl: './tienda-listar-component.html',
   styleUrl: './tienda-listar-component.css'
 })
 export class TiendaListarComponent {
 
   lista: Tienda[]=[];
-  displayedColumns: string[]=['idTienda', 'nombre', 'descripcion', 'Accion01', 'Accion02'];
+  displayedColumns: string[]=['tienda_id', 'nombre', 'descripcion', 'user_id', 'Accion01', 'Accion02'];
   dataSource: MatTableDataSource<Tienda> = new MatTableDataSource<Tienda>();
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;

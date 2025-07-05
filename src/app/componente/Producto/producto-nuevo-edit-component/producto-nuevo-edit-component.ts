@@ -50,13 +50,13 @@ export class ProductoNuevoEditComponent {
 
   constructor() {
     this.productoForm = this.fb.group({
-      idProducto: [''],
+      producto_id: [''],
       nombre : ['', Validators.required],
       descripcion : ['', Validators.required],
       precio: ['', Validators.required],
       stock: ['', Validators.required],
-      id_categoria : [''],
-      id_tienda : [''],
+      categoria_id : [''],
+      tienda_id : [''],
     });
   }
 
@@ -79,8 +79,8 @@ export class ProductoNuevoEditComponent {
           precio:data.precio,
           stock:data.stock,
           //id_categoria:data.id_categoria
-          id_categoria: data.id_categoria ? data.id_categoria.idCategoria : null,
-          id_tienda: data.id_tienda ? data.id_tienda.idTienda : null
+          categoria_id: data.categoria_id ? data.categoria_id.categoria_id : null,
+          tienda_id: data.tienda_id ? data.tienda_id.tienda_id : null
         });
       })
     }
@@ -89,7 +89,7 @@ export class ProductoNuevoEditComponent {
   onSubmit(){
     if(this.productoForm.valid){
       const producto : Producto = new Producto();
-      producto.idProducto = this.id;
+      producto.producto_id = this.id;
 
       producto.nombre = this.productoForm.value.nombre;
       producto.precio = this.productoForm.value.precio;
@@ -97,12 +97,12 @@ export class ProductoNuevoEditComponent {
       producto.stock = this.productoForm.value.stock;
 
       const categoriaProducto = new Categoria();
-      categoriaProducto.idCategoria = this.productoForm.value.id_categoria;
-      producto.id_categoria = categoriaProducto;
+      categoriaProducto.categoria_id = this.productoForm.value.categoria_id;
+      producto.categoria_id = categoriaProducto;
 
       const tiendaProducto = new Tienda();
-      tiendaProducto.idTienda = this.productoForm.value.id_tienda;
-      producto.id_tienda = tiendaProducto;
+      tiendaProducto.tienda_id = this.productoForm.value.tienda_id;
+      producto.tienda_id = tiendaProducto;
 
       if(!this.edicion){
         console.log("Datos leidos del form:", producto);

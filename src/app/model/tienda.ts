@@ -1,6 +1,9 @@
+import {User} from './user';
+
 export class Tienda {
 
-  idTienda: number;
+  tienda_id: number;
   nombre: string;
   descripcion: string;
+  user_id: User;
 }

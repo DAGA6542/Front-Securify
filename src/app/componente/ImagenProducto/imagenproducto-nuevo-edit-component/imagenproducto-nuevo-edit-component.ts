@@ -1,40 +1,43 @@
 import {Component, inject} from '@angular/core';
-import {MatCard, MatCardContent, MatCardTitle} from '@angular/material/card';
-import {MatFormField, MatHint, MatInput, MatInputModule, MatLabel} from '@angular/material/input';
-import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
+import {FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
+import {MatButton} from "@angular/material/button";
+import {MatCard, MatCardContent, MatCardTitle} from "@angular/material/card";
+import {MatFormField, MatHint, MatInput, MatInputModule, MatLabel} from "@angular/material/input";
 import {
   MatDatepicker,
   MatDatepickerInput,
   MatDatepickerModule,
   MatDatepickerToggle
 } from '@angular/material/datepicker';
-import {MatButton} from '@angular/material/button';
 import {MatNativeDateModule} from '@angular/material/core';
+import {ProductoService} from '../../../services/producto-service';
 import {ActivatedRoute, Router} from '@angular/router';
-import {ImagenproductoService} from '../../services/imagenproducto-service';
-import {Imagenproducto} from '../../model/imagenproducto';
-import {Producto} from '../../model/producto';
+import {Producto} from '../../../model/producto';
+import {Categoria} from '../../../model/categoria';
+import {Tienda} from '../../../model/tienda';
+import {ImagenproductoService} from '../../../services/imagenproducto-service';
+import {Imagenproducto} from '../../../model/imagenproducto';
 
 @Component({
   selector: 'app-imagenproducto-nuevo-edit-component',
-  imports: [
-    MatCard,
-    MatCardTitle,
-    MatCardContent,
-    ReactiveFormsModule,
-    MatFormField,
-    MatLabel,
-    MatInput,
-    MatFormField,
-    MatDatepickerToggle,
-    MatDatepicker,
-    MatDatepickerInput,
-    MatButton,
-    MatHint,//add
-    MatInputModule,//add
-    MatDatepickerModule, // add
-    MatNativeDateModule,
-  ],
+    imports: [
+      MatCard,
+      MatCardTitle,
+      MatCardContent,
+      ReactiveFormsModule,
+      MatFormField,
+      MatLabel,
+      MatInput,
+      MatFormField,
+      MatDatepickerToggle,
+      MatDatepicker,
+      MatDatepickerInput,
+      MatButton,
+      MatHint,//add
+      MatInputModule,//add
+      MatDatepickerModule, // add
+      MatNativeDateModule,
+    ],
   templateUrl: './imagenproducto-nuevo-edit-component.html',
   styleUrl: './imagenproducto-nuevo-edit-component.css'
 })
@@ -50,9 +53,9 @@ export class ImagenproductoNuevoEditComponent {
 
   constructor() {
     this.imagenproductoForm = this.fb.group({
-      idImagenProducto: [''],
+      imagenproducto_id: [''],
       urlImagen : ['', Validators.required],
-      id_producto : [''],
+      producto_id : [''],
     });
   }
 
@@ -72,7 +75,7 @@ export class ImagenproductoNuevoEditComponent {
         this.imagenproductoForm.patchValue({
           urlImagen:data.urlImagen,
           //id_categoria:data.id_categoria
-          id_producto: data.id_producto ? data.id_producto.idProducto : null
+          producto_id: data.producto_id ? data.producto_id.producto_id : null
         });
       })
     }
@@ -81,13 +84,13 @@ export class ImagenproductoNuevoEditComponent {
   onSubmit(){
     if(this.imagenproductoForm.valid){
       const imagenproducto : Imagenproducto = new Imagenproducto();
-      imagenproducto.idImagenProducto = this.id;
+      imagenproducto.imagenproducto_id = this.id;
 
       imagenproducto.urlImagen = this.imagenproductoForm.value.urlImagen;
 
       const imgproducto = new Producto();
-      imgproducto.idProducto = this.imagenproductoForm.value.id_producto;
-      imagenproducto.id_producto = imgproducto;
+      imgproducto.producto_id = this.imagenproductoForm.value.producto_id;
+      imagenproducto.producto_id = imgproducto;
 
       if(!this.edicion){
         console.log("Datos leidos del form:", imagenproducto);

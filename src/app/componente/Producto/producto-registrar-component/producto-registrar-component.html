@@ -24,9 +24,9 @@
 
       <mat-form-field appearance="fill">
         <mat-label>Categoria</mat-label>
-        <mat-select formControlName="id_categoria" required>
-          @for (c of listaCategorias; track c.idCategoria) {
-            <mat-option [value]="c.idCategoria">
+        <mat-select formControlName="categoria_id" required>
+          @for (c of listaCategorias; track c.categoria_id) {
+            <mat-option [value]="c.categoria_id">
               {{ c.nombre }}
             </mat-option>
           }
@@ -35,9 +35,9 @@
 
       <mat-form-field appearance="fill">
         <mat-label>Tienda</mat-label>
-        <mat-select formControlName="id_tienda" required>
-          @for (c of listaTiendas; track c.idTienda) {
-            <mat-option [value]="c.idTienda">
+        <mat-select formControlName="tienda_id" required>
+          @for (c of listaTiendas; track c.tienda_id) {
+            <mat-option [value]="c.tienda_id">
               {{ c.nombre }}
             </mat-option>
           }

@@ -2,7 +2,7 @@ import {Producto} from './producto';
 
 export class Imagenproducto {
 
-  idImagenProducto: number;
+  imagenproducto_id: number;
   urlImagen: string;
-  id_producto: Producto;
+  producto_id: Producto;
 }

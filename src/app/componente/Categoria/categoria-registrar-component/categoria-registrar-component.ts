@@ -35,7 +35,7 @@ export class CategoriaRegistrarComponent {
   //tipoProducto: TipoProducto = new TipoProducto();
   constructor() {
     this.categoriaForm = this.fb.group({
-      idCategoria: [''],
+      categoria_id: [''],
       nombre: ['', Validators.required],
       descripcion: ['', Validators.required],
     })
@@ -58,7 +58,7 @@ export class CategoriaRegistrarComponent {
       categoria.nombre = this.categoriaForm.controls['nombre'].value;
       categoria.descripcion = this.categoriaForm.controls['descripcion'].value;
       //categoria.tipoProducto.id = this.productoForm.value.tipoProducto;
-      console.log("Producto a enviar:", categoria);
+      console.log("Categoria a enviar:", categoria);
 
       this.categoriaService.insert(categoria).subscribe({
         next: (data:Object) => {

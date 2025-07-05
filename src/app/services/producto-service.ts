@@ -20,15 +20,15 @@ export class ProductoService {
   }
   listId(id: number): Observable<any> {
     console.log(this.url + "producto/buscaproducto/"+ id);
-    return this.httpClient.get<Producto>(this.url+"producto/buscaproducto/"+id);
+    return this.httpClient.get<Producto>(this.url+"producto/listaproducto/"+id);
   }
   insert(producto:Producto): Observable<any>{
     console.log(producto);
-    return this.httpClient.post(this.url+"producto/insertproducto", producto)
+    return this.httpClient.post(this.url+"producto/postproducto", producto)
   }
 
   update(producto: Producto): Observable<any>{
-    return this.httpClient.put(this.url + "producto/updateproducto", producto);
+    return this.httpClient.put(this.url + "producto/actualizarproducto", producto);
   }
   delete(id: number): Observable<any>{
     return this.httpClient.delete(this.url + "producto/deleteproducto/" + id);
@@ -46,4 +46,3 @@ export class ProductoService {
     });
   }
 }
-

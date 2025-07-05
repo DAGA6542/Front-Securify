@@ -10,6 +10,8 @@ import {Router} from '@angular/router';
 import {Categoria} from '../../../model/categoria';
 import {TiendaService} from '../../../services/tienda-service';
 import {Tienda} from '../../../model/tienda';
+import {User} from '../../../model/user';
+import {UserService} from '../../../services/user-service';
 
 @Component({
   selector: 'app-tienda-registrar-component',
@@ -30,39 +32,48 @@ import {Tienda} from '../../../model/tienda';
 })
 export class TiendaRegistrarComponent {
 
+
   tiendaForm: FormGroup;
   fb = inject(FormBuilder);
   tiendaService: TiendaService = inject(TiendaService);
+  userService: UserService = inject(UserService);
   router = inject(Router);
-  lista: Tienda[] = [];
-  //tipoProducto: TipoProducto = new TipoProducto();
+  listaUsers: User[] = [];
+  //public idCategoria: number = 0;
+  //categoria: Categoria = new Categoria();
   constructor() {
     this.tiendaForm = this.fb.group({
-      idTienda: [''],
+      tienda_id: [''],
       nombre: ['', Validators.required],
       descripcion: ['', Validators.required],
+      user_id: ['', Validators.required],
     })
   }
   ngOnInit(): void {
-    this.tiendaService.list().subscribe({
-      next: (data: Tienda[]) => {
-        this.lista= data;
+    this.userService.list().subscribe({
+      next: (data: User[]) => {
+        this.listaUsers= data;
       },
+
       error: (error) => {
         console.log(error);
       }
     })
+
   }
 
   onSubmit(): void {
     if(this.tiendaForm.valid){
       const tienda:Tienda = new Tienda();
-      //categoria.idCategoria = this.categoriaForm.controls['idCategoria'].value;
+      //producto.idProducto = this.productoForm.controls['idProducto'].value;
       tienda.nombre = this.tiendaForm.controls['nombre'].value;
       tienda.descripcion = this.tiendaForm.controls['descripcion'].value;
-      //categoria.tipoProducto.id = this.productoForm.value.tipoProducto;
-      console.log("Tienda a enviar:", tienda);
 
+      const userSeleccionado = new User();
+      userSeleccionado.user_id = this.tiendaForm.value.user_id;
+      tienda.user_id = userSeleccionado;
+
+      console.log("Producto a enviar:", tienda);
       this.tiendaService.insert(tienda).subscribe({
         next: (data:Object) => {
           alert("Tienda Registrada!");
@@ -70,10 +81,12 @@ export class TiendaRegistrarComponent {
           this.tiendaService.actualizarLista();
         }
       });
-      this.router.navigate(['']);
+      this.router.navigate(['tiendas']);
     }else {
       alert("Formulario invalido!");
       console.log("Formulario invalido");
     }
   }
+
+  protected readonly User = User;
 }

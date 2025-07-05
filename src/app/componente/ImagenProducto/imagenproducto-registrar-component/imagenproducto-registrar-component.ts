@@ -1,31 +1,33 @@
 import {Component, inject} from '@angular/core';
-import {MatCard, MatCardContent, MatCardTitle} from '@angular/material/card';
-import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
-import {MatFormField, MatInput, MatLabel} from '@angular/material/input';
+import {FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
+import {MatButton} from "@angular/material/button";
+import {MatCard, MatCardContent, MatCardTitle} from "@angular/material/card";
+import {MatFormField, MatInput, MatLabel} from "@angular/material/input";
 import {MatSelect} from '@angular/material/select';
 import {MatOption} from '@angular/material/core';
-import {MatButton} from '@angular/material/button';
-import {ImagenproductoService} from '../../services/imagenproducto-service';
-import {ProductoService} from '../../services/producto-service';
+import {ProductoService} from '../../../services/producto-service';
+import {CategoriaService} from '../../../services/categoria-service';
+import {TiendaService} from '../../../services/tienda-service';
 import {Router} from '@angular/router';
-import {Producto} from '../../model/producto';
-import {Imagenproducto} from '../../model/imagenproducto';
-
+import {Tienda} from '../../../model/tienda';
+import {Producto} from '../../../model/producto';
+import {Imagenproducto} from '../../../model/imagenproducto';
+import {ImagenproductoService} from '../../../services/imagenproducto-service';
 
 @Component({
   selector: 'app-imagenproducto-registrar-component',
-  imports: [
-    MatCard,
-    MatCardTitle,
-    MatCardContent,
-    ReactiveFormsModule,
-    MatFormField,
-    MatLabel,
-    MatSelect,
-    MatOption,
-    MatInput,
-    MatButton
-  ],
+    imports: [
+      MatCard,
+      MatCardTitle,
+      MatCardContent,
+      ReactiveFormsModule,
+      MatFormField,
+      MatLabel,
+      MatSelect,
+      MatOption,
+      MatInput,
+      MatButton
+    ],
   templateUrl: './imagenproducto-registrar-component.html',
   styleUrl: './imagenproducto-registrar-component.css'
 })
@@ -41,9 +43,9 @@ export class ImagenproductoRegistrarComponent {
   //categoria: Categoria = new Categoria();
   constructor() {
     this.imagenproductoForm = this.fb.group({
-      idImagenProducto: [''],
+      imagenproducto_id: [''],
       urlImagen: ['', Validators.required],
-      id_producto: ['', Validators.required],
+      producto_id: ['', Validators.required],
     })
   }
   ngOnInit(): void {
@@ -66,8 +68,8 @@ export class ImagenproductoRegistrarComponent {
       imagenproducto.urlImagen = this.imagenproductoForm.controls['urlImagen'].value;
 
       const productoSeleccionado = new Producto();
-      productoSeleccionado.idProducto = this.imagenproductoForm.value.id_producto;
-      imagenproducto.id_producto = productoSeleccionado;
+      productoSeleccionado.producto_id = this.imagenproductoForm.value.producto_id;
+      imagenproducto.producto_id = productoSeleccionado;
 
       console.log("Imagen de producto a enviar:", imagenproducto);
       this.imagenproductoService.insert(imagenproducto).subscribe({

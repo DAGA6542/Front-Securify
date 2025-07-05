@@ -8,6 +8,7 @@ import {MatButton} from '@angular/material/button';
 import {ProductoService} from '../../../services/producto-service';
 import {Router} from '@angular/router';
 import {CategoriaService} from '../../../services/categoria-service';
+import {CategoriaRegistrarComponent} from '../../Categoria/categoria-registrar-component/categoria-registrar-component';
 import {Categoria} from '../../../model/categoria';
 import {Producto} from '../../../model/producto';
 import {Tienda} from '../../../model/tienda';
@@ -44,13 +45,13 @@ export class ProductoRegistrarComponent {
   //categoria: Categoria = new Categoria();
   constructor() {
     this.productoForm = this.fb.group({
-      idProducto: [''],
+      producto_id: [''],
       nombre: ['', Validators.required],
       descripcion: ['', Validators.required],
       precio: ['', Validators.required],
       stock: ['', Validators.required],
-      id_categoria: ['', Validators.required],
-      id_tienda: ['', Validators.required],
+      categoria_id: ['', Validators.required],
+      tienda_id: ['', Validators.required],
     })
   }
   ngOnInit(): void {
@@ -84,12 +85,12 @@ export class ProductoRegistrarComponent {
       producto.stock = this.productoForm.value.stock;
 
       const categoriaSeleccionada = new Categoria();
-      categoriaSeleccionada.idCategoria = this.productoForm.value.id_categoria;
-      producto.id_categoria = categoriaSeleccionada;
+      categoriaSeleccionada.categoria_id = this.productoForm.value.categoria_id;
+      producto.categoria_id = categoriaSeleccionada;
 
       const tiendaSeleccionada = new Tienda();
-      tiendaSeleccionada.idTienda = this.productoForm.value.id_tienda;
-      producto.id_tienda = tiendaSeleccionada;
+      tiendaSeleccionada.tienda_id = this.productoForm.value.tienda_id;
+      producto.tienda_id = tiendaSeleccionada;
 
       console.log("Producto a enviar:", producto);
       this.productoService.insert(producto).subscribe({
@@ -107,4 +108,5 @@ export class ProductoRegistrarComponent {
   }
 
   protected readonly Categoria = Categoria;
+  protected readonly Tienda = Tienda;
 }

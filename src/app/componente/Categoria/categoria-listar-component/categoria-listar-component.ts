@@ -23,9 +23,7 @@ import {CategoriaService} from '../../../services/categoria-service';
     MatColumnDef,
     MatHeaderRowDef,
     MatRowDef,
-    DatePipe,
     MatSort,
-    MatSortHeader,
     MatButton,
     RouterLink,
     MatCellDef,
@@ -43,7 +41,7 @@ import {CategoriaService} from '../../../services/categoria-service';
 export class CategoriaListarComponent {
 
   lista: Categoria[]=[];
-  displayedColumns: string[]=['idCategoria', 'nombre', 'descripcion', 'Accion01', 'Accion02'];
+  displayedColumns: string[]=['categoria_id', 'nombre', 'descripcion', 'Accion01', 'Accion02'];
   dataSource: MatTableDataSource<Categoria> = new MatTableDataSource<Categoria>();
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -71,4 +69,3 @@ export class CategoriaListarComponent {
     });
   }
 }
-

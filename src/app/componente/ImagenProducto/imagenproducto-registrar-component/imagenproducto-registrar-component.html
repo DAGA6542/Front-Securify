@@ -9,9 +9,9 @@
 
       <mat-form-field appearance="fill">
         <mat-label>Producto</mat-label>
-        <mat-select formControlName="id_producto" required>
-          @for (c of listaProductos; track c.idProducto) {
-            <mat-option [value]="c.idProducto">
+        <mat-select formControlName="producto_id" required>
+          @for (c of listaProductos; track c.producto_id) {
+            <mat-option [value]="c.producto_id">
               {{ c.nombre }}
             </mat-option>
           }
@@ -23,5 +23,4 @@
     </form>
   </mat-card-content>
 </mat-card>
-
 

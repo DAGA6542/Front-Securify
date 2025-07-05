@@ -14,6 +14,18 @@
         <input matInput formControlName="descripcion" placeholder="Ingrese descripcion" />
       </mat-form-field>
 
+      <mat-form-field appearance="fill">
+        <mat-label>User/Propietario</mat-label>
+        <mat-select formControlName="user_id" required>
+          @for (u of listaUsers; track u.user_id) {
+            <mat-option [value]="u.user_id">
+              {{ u.nombre }}
+            </mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+
+
 
 
       <button type="submit" mat-raised-button color="primary">Registrar</button>
