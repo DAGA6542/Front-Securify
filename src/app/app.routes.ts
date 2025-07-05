@@ -1,21 +1,27 @@
 import { Routes } from '@angular/router';
 import {Login} from './components/login/login';
+import {Producto} from './model/producto';
+import {Tienda} from './model/tienda';
+import {Pago} from './model/pago';
+import {Orden} from './model/orden';
+import {Detalleorden} from './model/detalleorden';
+import {Comentario} from './model/comentario';
+import {Categoria} from './model/categoria';
 import {Home} from './components/home/home';
+import {ListarTienda} from './components/tienda/listar-tienda/listar-tienda';
+import {InsertarTienda} from './components/tienda/insertar-tienda/insertar-tienda';
+import {InsertarPago} from './components/pago/insertar-pago/insertar-pago';
+import {ListarPago} from './components/pago/listar-pago/listar-pago';
+import {ListarOrden} from './components/orden/listar-orden/listar-orden';
+import {InsertarOrden} from './components/orden/insertar-orden/insertar-orden';
+import {InsertarDetalleorden} from './components/detalleorden/insertar-detalleorden/insertar-detalleorden';
+import {ListarDetalleorden} from './components/detalleorden/listar-detalleorden/listar-detalleorden';
+import {InsertarComentario} from './components/comentario/insertar-comentario/insertar-comentario';
+import {ListarComentario} from './components/comentario/listar-comentario/listar-comentario';
+import {InsertarCategoria} from './components/categoria/insertar-categoria/insertar-categoria';
+import {ListarCategoria} from './components/categoria/listar-categoria/listar-categoria';
 import {Registro} from './components/registro/registro';
-import {CategoriaComponent} from './components/categoria-component/categoria-component';
-import {ComentarioComponent} from './components/comentario-component/comentario-component';
-import {TiendaComponent} from './components/tienda-component/tienda-component';
-import {DetalleordenComponent} from './components/detalleorden-component/detalleorden-component';
-import {OrdenComponent} from './components/orden-component/orden-component';
-import {ProductoComponent} from './components/producto-component/producto-component';
-import {PagoComponent} from './components/pago-component/pago-component';
-import {ListarCategoriaComponent} from './components/categoria-component/listar-categoria-component/listar-categoria-component';
-import {ListarTiendaComponent} from './components/tienda-component/listar-tienda-component/listar-tienda-component';
-import {ListarProductoComponent} from './components/producto-component/listar-producto-component/listar-producto-component';
-import {ListarPagoComponent} from './components/pago-component/listar-pago-component/listar-pago-component';
-import {ListarOrdenComponent} from './components/orden-component/listar-orden-component/listar-orden-component';
-import {ListarDetalleordenComponent} from './components/detalleorden-component/listar-detalleorden-component/listar-detalleorden-component';
-import {ListarComentarioComponent} from './components/comentario-component/listar-comentario-component/listar-comentario-component';
+import {ProductoListarComponent} from './components/producto-listar-component/producto-listar-component';
 
 
 export const routes: Routes = [
@@ -23,19 +29,24 @@ export const routes: Routes = [
   {path: 'login', component: Login},
   {path: 'registro', component: Registro},
   {path: '', component: Login, pathMatch: 'full'},
-  {path: 'producto', component: ProductoComponent},
-  {path: 'producto/listar', component: ListarProductoComponent},
-  {path: 'tienda', component: TiendaComponent},
-  {path: 'tienda/listar', component: ListarTiendaComponent},
-  {path: 'pago', component: PagoComponent},
-  {path: 'pago/listar', component: ListarPagoComponent},
-  {path: 'orden', component: OrdenComponent},
-  {path: 'orden/listar', component: ListarOrdenComponent},
-  {path: 'detalleorden', component: DetalleordenComponent},
-  {path: 'detalleorden/listar', component: ListarDetalleordenComponent},
-  {path: 'comentario', component: ComentarioComponent},
-  {path: 'comentario/listar', component: ListarComentarioComponent},
-  {path: 'categoria', component: CategoriaComponent},
-  {path: 'categoria/listar', component: ListarCategoriaComponent},
+  {path: 'producto', component: ProductoListarComponent},
+  {path: 'tienda', component: Tienda},
+  {path: 'tienda/insertar', component: InsertarTienda},
+  {path: 'tienda/listar', component: ListarTienda},
+  {path: 'pago', component: Pago},
+  {path: 'pago/insertar', component: InsertarPago},
+  {path: 'pago/listar', component: ListarPago},
+  {path: 'orden', component: Orden},
+  {path: 'orden/insertar', component: InsertarOrden},
+  {path: 'orden/listar', component: ListarOrden},
+  {path: 'detalleorden', component: Detalleorden},
+  {path: 'detalleorden/insertar', component: InsertarDetalleorden},
+  {path: 'detalleorden/listar', component: ListarDetalleorden},
+  {path: 'comentario', component: Comentario},
+  {path: 'comentario/insertar', component: InsertarComentario},
+  {path: 'comentario/listar', component: ListarComentario},
+  {path: 'categoria', component: Categoria},
+  {path: 'categoria/insertar', component: InsertarCategoria},
+  {path: 'categoria/listar', component: ListarCategoria},
 
 ];

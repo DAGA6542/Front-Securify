@@ -1,44 +1,46 @@
-<mat-toolbar color="primary" >
+<mat-toolbar class="nav-bar"  >
   <mat-toolbar-row>
+    <div class="nav-logo">
+      <img class="securify" src="/assets/securify.jpg" alt="securify">
+    </div>
 
-    <span> Bienvenido a Securify </span>
+    <span class="brand-title"> Securify </span>
     @if (esUsuario() || esAdministrador()|| esVendedor()){
 
       <span class="spacer"></span>
-      <mat-form-field class="buscador" appearance="fill">
-        <mat-label>Buscar productos</mat-label>
-        <input matInput />
-        <button mat-icon-button matSuffix disabled>
-          <mat-icon>search</mat-icon>
-        </button>
-      </mat-form-field>
-      <span class="spacer"></span>
 
-      <button mat-raised-button [routerLink]="'/home'">Home</button>
+      <div class="search-box">
+        <mat-form-field class="buscador" appearance="fill">
+          <input matInput placeholder="Buscar productos..." />
+          <button mat-icon-button matSuffix color="accent">
+            <mat-icon>search</mat-icon>
+          </button>
+        </mat-form-field>
+      </div>
+
+      <a class="nav-link" [routerLink]="'/home'">Home</a>
     }
 
-    @if (esAdministrador()){
-      <button mat-raised-button [routerLink]="'/tienda/listar'">Proveedores</button>
-      <button mat-raised-button [routerLink]="'/categoria/listar'">Categoria</button>
-      <button mat-raised-button [routerLink]="'/categoria'">Categoria</button>
+    <!-- Enlaces -->
 
-    }
-    @if (esUsuario()){
-      <button mat-raised-button [routerLink]="'/producto'">Productos</button>
-      <button mat-raised-button [routerLink]="'/detalleorden'">Orden</button>
-      <button mat-raised-button [routerLink]="'/categoria'">Categoria</button>
-          }
-    @if (esVendedor()){
-      <button mat-raised-button [routerLink]="'/producto/insertar'">Agregar Producto</button>
-      <button mat-raised-button [routerLink]="'/detalleorden'">Orden</button>
-      <button mat-raised-button [routerLink]="'/categoria'">Categoria</button>
-    }
-    @if (esUsuario() || esAdministrador()|| esVendedor()){
-      <button mat-raised-button [routerLink]="'/login'" color="warn">Logout</button>
-
+    @if (esAdministrador()) {
+      <a class="nav-link" [routerLink]="'/tienda/listar'">Proveedores</a>
     }
 
+    @if (esUsuario()) {
+      <a class="nav-link" [routerLink]="'/producto'">Productos</a>
+      <a class="nav-link" [routerLink]="'/detalleorden'">Orden</a>
+      <a class="nav-link" [routerLink]="'/categoria'">Categoría</a>
+    }
 
+    @if (esVendedor()) {
+      <a class="nav-link" [routerLink]="'/producto/insertar'">Agregar Producto</a>
+      <a class="nav-link" [routerLink]="'/detalleorden'">Orden</a>
+      <a class="nav-link" [routerLink]="'/categoria'">Categoría</a>
+    }
+
+    @if (esUsuario() || esAdministrador() || esVendedor()) {
+      <a class="nav-link logout-link" [routerLink]="'/login'">Logout</a>
+    }
   </mat-toolbar-row>
 </mat-toolbar>
-

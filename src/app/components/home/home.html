@@ -4,25 +4,33 @@
     <mat-nav-list>
       <!-- Home -->
       <mat-list-item>
-        <button mat-button routerLink="/" (click)="sidenav.toggle()">
+        <button mat-button (click)="sidenav.toggle()">
           <mat-icon>home</mat-icon> Home
         </button>
+
       </mat-list-item>
 
       <!-- Administración -->
+
       <mat-expansion-panel>
         <mat-expansion-panel-header>
           <mat-panel-title>Administración</mat-panel-title>
         </mat-expansion-panel-header>
+        @if (esAdministrador()  || esUsuario() || esVendedor()) {
         <button mat-button [matMenuTriggerFor]="menuUsuario">
           <mat-icon>person</mat-icon> Usuario
         </button>
+        }
+        @if (esAdministrador()) {
         <button mat-button [matMenuTriggerFor]="menuRol">
           <mat-icon>security</mat-icon> Rol
         </button>
+        }
       </mat-expansion-panel>
 
+
       <!-- Catálogo de Productos -->
+      @if (esAdministrador() || esVendedor() || esUsuario()) {
       <mat-expansion-panel>
         <mat-expansion-panel-header>
           <mat-panel-title>Catálogo de Productos</mat-panel-title>
@@ -40,8 +48,10 @@
           <mat-icon>storefront</mat-icon> Tienda
         </button>
       </mat-expansion-panel>
+      }
 
       <!-- Carrito y Proceso de Compra -->
+      @if (esUsuario() || esAdministrador()) {
       <mat-expansion-panel>
         <mat-expansion-panel-header>
           <mat-panel-title>Proceso de Compra</mat-panel-title>
@@ -56,8 +66,9 @@
           <mat-icon>payments</mat-icon> Pago
         </button>
       </mat-expansion-panel>
-
+      }
       <!-- Interacción del Usuario -->
+      @if (esUsuario() || esAdministrador()) {
       <mat-expansion-panel>
         <mat-expansion-panel-header>
           <mat-panel-title>Interacción del Usuario</mat-panel-title>
@@ -69,8 +80,9 @@
           <mat-icon>favorite</mat-icon> Favorito
         </button>
       </mat-expansion-panel>
-
+      }
       <!-- Reportes -->
+      @if (esAdministrador()) {
       <mat-expansion-panel>
         <mat-expansion-panel-header>
           <mat-panel-title>Reportes</mat-panel-title>
@@ -82,55 +94,76 @@
           <mat-icon>bar_chart</mat-icon> Listar Numero por Lugar
         </button>
       </mat-expansion-panel>
+      }
+      <!-- Logout como botón visible -->
+      <button mat-button class="logout-button"  [routerLink]="'/login'">
+        <mat-icon>logout</mat-icon> Logout
+      </button>
     </mat-nav-list>
   </mat-sidenav>
 
-  <!-- Toolbar -->
-  <mat-sidenav-content>
-    <mat-toolbar color="primary">
-      <button mat-icon-button (click)="sidenav.toggle()">
-        <mat-icon>menu</mat-icon>
-      </button>
-      <span>TF-Turismap</span>
-    </mat-toolbar>
-    <router-outlet></router-outlet>
-  </mat-sidenav-content>
+    <!-- Toolbar -->
+    <mat-sidenav-content>
+      <mat-toolbar color="primary">
+        <button mat-icon-button (click)="sidenav.toggle()">
+          <mat-icon>menu</mat-icon>
+        </button>
+        <span>TF-Turismap</span>
+      </mat-toolbar>
+
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+
 </mat-sidenav-container>
 
 <!-- Menú de Usuario -->
 <mat-menu #menuUsuario="matMenu">
+  @if (esAdministrador()) {
   <button mat-menu-item routerLink="/usuario">Listar</button>
+  }
+  @if (esAdministrador() || esVendedor() || esUsuario()) {
   <button mat-menu-item routerLink="/usuario/insertar">Registrar</button>
-</mat-menu>
+  }
+  </mat-menu>
 
 <!-- Menú de Rol -->
 <mat-menu #menuRol="matMenu">
+  @if (esAdministrador()) {
   <button mat-menu-item routerLink="/rol">Listar</button>
   <button mat-menu-item routerLink="/rol/insertar">Registrar</button>
+  }
 </mat-menu>
 
 <!-- Menú de Producto -->
 <mat-menu #menuProducto="matMenu">
   <button mat-menu-item routerLink="/ciudad">Listar</button>
+  @if (esAdministrador() || esVendedor()) {
   <button mat-menu-item routerLink="/ciudad/insertar">Registrar</button>
+  }
 </mat-menu>
 
 <!-- Menú de Imagen Producto -->
 <mat-menu #menuImagenProducto="matMenu">
   <button mat-menu-item routerLink="/departamento">Listar</button>
+  @if (esAdministrador() || esVendedor()) {
   <button mat-menu-item routerLink="/departamento/insertar">Registrar</button>
+  }
 </mat-menu>
 
 <!-- Menú de Categoria -->
 <mat-menu #menuCategoria="matMenu">
   <button mat-menu-item routerLink="/categoria/listar">Listar</button>
+  @if (esAdministrador() || esVendedor()) {
   <button mat-menu-item routerLink="/categoria">Registrar</button>
+  }
 </mat-menu>
 
 <!-- Menú de Tienda -->
 <mat-menu #menuTienda="matMenu">
   <button mat-menu-item routerLink="/negocio">Listar</button>
+  @if (esAdministrador() || esVendedor()) {
   <button mat-menu-item routerLink="/negocio/insertar">Registrar</button>
+  }
 </mat-menu>
 
 <!-- Menú de Orden -->
