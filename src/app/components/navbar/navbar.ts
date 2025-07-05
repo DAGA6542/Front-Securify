@@ -1,8 +1,8 @@
 import {Component, inject} from '@angular/core';
 import {MatToolbar, MatToolbarRow} from '@angular/material/toolbar';
-import {MatButton, MatIconButton} from '@angular/material/button';
+import { MatIconButton} from '@angular/material/button';
 import {Router, RouterLink} from '@angular/router';
-import {MatFormField, MatInput, MatLabel} from '@angular/material/input';
+import {MatFormField, MatInput} from '@angular/material/input';
 import {FormsModule} from '@angular/forms';
 import {MatIcon} from '@angular/material/icon';
 
@@ -10,13 +10,11 @@ import {MatIcon} from '@angular/material/icon';
   selector: 'app-navbar',
   imports: [
     MatToolbar,
-    MatButton,
     RouterLink,
     MatToolbarRow,
     MatFormField,
     MatInput,
     FormsModule,
-    MatLabel,
     MatIcon,
     MatIconButton,
   ],

@@ -22,6 +22,7 @@ export const loginInterceptor: HttpInterceptorFn = (req, next) => {
       if(error.status === HttpStatusCode.Forbidden){
         alert("NO TIENES PERMISOS!")
         return EMPTY;
+
       }else{
         return throwError(error);
       }
