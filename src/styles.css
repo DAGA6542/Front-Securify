@@ -1,7 +1,19 @@
 /* You can add global styles to this file, and also import other style files */
+<<<<<<< HEAD
 @import '@angular/material/prebuilt-themes/indigo-pink.css';
 
 html, body { height: 100%; }
+=======
+
+html, body {
+  height: 100%;
+  background-image: url("assets/Fondo.jpg");
+  background-size: cover;       /* Para que se ajuste a toda la pantalla */
+  background-position: center;  /* Centra la imagen */
+  background-repeat: no-repeat; /* Evita que se repita */
+
+}
+>>>>>>> a391f8ee07513e069c8c986447e384bebc4be53c
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 /*html, body { height: 100%; }

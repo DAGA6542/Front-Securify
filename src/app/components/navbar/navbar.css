@@ -10,25 +10,61 @@ span {
 button {
   margin: 0px 2px;
 }
+.brand-title {
+  font-weight: bold;
+  font-size: 23px;
+  margin-left: 10px;
+  color: whitesmoke;
+}
+
+.search-box {
+  background-color: white;
+  border-radius: 8px;
+  padding: 0 4px;
+  min-width: 300px;
+  max-width: 350px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
 
 .buscador {
-  background-color: white;
-  border-radius: 4px;
-  padding-left: 8px;
-  padding-right: 4px;
-  min-width: 250px;
-  max-width: 300px;
+  flex: 1;
+  margin: 0;
+}
+
+.buscador .mat-form-field-wrapper {
+  padding: 0;
+}
+
+.buscador .mat-form-field-flex {
   height: 40px;
+  align-items: center;
+}
+
+.nav-bar{
+  background-color: #00E6A1;
+}
+
+.nav-link {
+  margin-left: 16px;
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 16px;
+}
+
+
+/* Logo */
+.nav-logo {
   display: flex;
   align-items: center;
 }
 
-.buscador .mat-form-field-infix {
-  padding-top: 0;
-  padding-bottom: 0;
+.nav-logo img.securify {
+  height: 40px;
+  width: auto;
+  margin-right: 12px;
+  border-radius: 4px;
 }
-
-.spacer {
-  flex: 1 1 auto;
-}
-

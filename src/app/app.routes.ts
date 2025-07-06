@@ -8,8 +8,6 @@ import {Detalleorden} from './model/detalleorden';
 import {Comentario} from './model/comentario';
 import {Categoria} from './model/categoria';
 import {Home} from './components/home/home';
-import {InsertarProducto} from './components/producto/insertar-producto/insertar-producto';
-import {ListarProducto} from './components/producto/listar-producto/listar-producto';
 import {ListarTienda} from './components/tienda/listar-tienda/listar-tienda';
 import {InsertarTienda} from './components/tienda/insertar-tienda/insertar-tienda';
 import {InsertarPago} from './components/pago/insertar-pago/insertar-pago';
@@ -21,7 +19,11 @@ import {ListarDetalleorden} from './components/detalleorden/listar-detalleorden/
 import {InsertarComentario} from './components/comentario/insertar-comentario/insertar-comentario';
 import {ListarComentario} from './components/comentario/listar-comentario/listar-comentario';
 import {Registro} from './components/registro/registro';
+<<<<<<< HEAD
 import {CategoriaComponent} from './components/categoria-component/categoria-component';
+=======
+import {ProductoListarComponent} from './components/producto-listar-component/producto-listar-component';
+>>>>>>> a391f8ee07513e069c8c986447e384bebc4be53c
 
 
 export const routes: Routes = [
@@ -29,9 +31,7 @@ export const routes: Routes = [
   {path: 'login', component: Login},
   {path: 'registro', component: Registro},
   {path: '', component: Login, pathMatch: 'full'},
-  {path: 'producto', component: Producto},
-  {path: 'producto/insertar', component: InsertarProducto},
-  {path: 'producto/listar', component: ListarProducto},
+  {path: 'producto', component: ProductoListarComponent},
   {path: 'tienda', component: Tienda},
   {path: 'tienda/insertar', component: InsertarTienda},
   {path: 'tienda/listar', component: ListarTienda},
