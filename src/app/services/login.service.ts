@@ -9,7 +9,7 @@ import {RequestDto} from '../model/request.dto';
   providedIn: 'root'
 })
 export class LoginService {
-  private url = environments.apiUrl;
+  private url = environments.apiUrl ;
   private http: HttpClient = inject(HttpClient);
   constructor() { }
 

@@ -20,9 +20,8 @@ import {InsertarDetalleorden} from './components/detalleorden/insertar-detalleor
 import {ListarDetalleorden} from './components/detalleorden/listar-detalleorden/listar-detalleorden';
 import {InsertarComentario} from './components/comentario/insertar-comentario/insertar-comentario';
 import {ListarComentario} from './components/comentario/listar-comentario/listar-comentario';
-import {InsertarCategoria} from './components/categoria/insertar-categoria/insertar-categoria';
-import {ListarCategoria} from './components/categoria/listar-categoria/listar-categoria';
 import {Registro} from './components/registro/registro';
+import {CategoriaComponent} from './components/categoria-component/categoria-component';
 
 
 export const routes: Routes = [
@@ -48,8 +47,7 @@ export const routes: Routes = [
   {path: 'comentario', component: Comentario},
   {path: 'comentario/insertar', component: InsertarComentario},
   {path: 'comentario/listar', component: ListarComentario},
-  {path: 'categoria', component: Categoria},
-  {path: 'categoria/insertar', component: InsertarCategoria},
-  {path: 'categoria/listar', component: ListarCategoria},
+  {path: 'categoria', component: CategoriaComponent},
+
 
 ];

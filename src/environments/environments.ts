@@ -1,4 +1,4 @@
 export const environments = {
   production: false,
-  apiUrl: "http://localhost:8080/securify",
+  apiUrl: "http://localhost:8080"
 }
