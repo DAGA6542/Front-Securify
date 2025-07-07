@@ -1,0 +1,76 @@
+
+/* src/app/registro/registro.component.css */
+
+.example-card {
+  margin: 0 auto;
+  width: 600px;
+  max-width: 90%; /* Hace que sea un poco responsivo */
+}
+
+mat-card {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08); /* Sombra de tarjeta un poco más notoria */
+  border-radius: 10px; /* Bordes más redondeados */
+  padding: 30px; /* Más padding para que respire */
+}
+
+mat-card-title {
+  color: #e1dcdc; /* Color específico para el título de la tarjeta */
+  margin-bottom: 25px; /* Más espacio debajo del título */
+  text-align: center;
+  font-size: 1.8em;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Espacio entre los campos del formulario */
+}
+
+/* Sobrescribiendo estilos de campos de formulario de Angular Material */
+.mat-form-field-wrapper {
+  padding-bottom: 0 !important; /* Quitar el padding extra inferior de Angular Material */
+}
+
+.mat-form-field-underline {
+  /* Color del subrayado cuando no está enfocado */
+  background-color: #e0e0e0 !important;
+}
+
+.mat-form-field.mat-focused .mat-form-field-ripple {
+  /* Color del efecto de onda cuando está enfocado */
+  background-color: #007bff !important; /* Tu color de acento */
+}
+
+.mat-form-field-label {
+  /* Color de la etiqueta del campo de formulario */
+  color: #eeeaea !important;
+}
+
+/* Estilos para los botones (usando las clases de Angular Material) */
+button[mat-raised-button][color="primary"] {
+  background-color: #603591; /* Tu color primario (azul, por ejemplo) */
+  color: #fff;
+  padding: 12px 25px;
+  font-size: 1.1em;
+  font-weight: 600;
+  border-radius: 5px;
+}
+
+button[mat-button][color="accent"] {
+  color: #6c757d; /* Tu color secundario (gris, por ejemplo) */
+  background-color: transparent;
+  border: 1px solid #6c757d;
+  padding: 12px 25px;
+  font-size: 1.1em;
+  font-weight: 600;
+  border-radius: 5px;
+}
+
+button[mat-raised-button][color="primary"]:hover {
+  background-color: #613383;
+}
+
+button[mat-button][color="accent"]:hover {
+  background-color: #f0f0f0;
+  color: #5a6268;
+}

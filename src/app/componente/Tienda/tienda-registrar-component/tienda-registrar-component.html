@@ -1,0 +1,35 @@
+<p>tienda-registrar-component works!</p>
+
+<mat-card class="example-card">
+  <mat-card-title>Form registro de Tienda</mat-card-title>
+  <mat-card-content>
+    <form [formGroup]="tiendaForm" class="form-container"  (ngSubmit)="onSubmit()">
+      <mat-form-field appearance="fill">
+        <mat-label>Nombre</mat-label>
+        <input matInput formControlName="nombre" placeholder="Ingrese un nombre" />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Descripcion</mat-label>
+        <input matInput formControlName="descripcion" placeholder="Ingrese descripcion" />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>User/Propietario</mat-label>
+        <mat-select formControlName="user_id" required>
+          @for (u of listaUsers; track u.user_id) {
+            <mat-option [value]="u.user_id">
+              {{ u.nombre }}
+            </mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+
+
+
+
+      <button type="submit" mat-raised-button color="primary">Registrar</button>
+    </form>
+  </mat-card-content>
+</mat-card>
+

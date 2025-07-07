@@ -1,0 +1,58 @@
+<p>tienda-registrar-component works!</p>
+
+<mat-card class="example-card">
+  <mat-card-title>Form registro de Comentario</mat-card-title>
+  <mat-card-content>
+    <form [formGroup]="comentarioForm" class="form-container"  (ngSubmit)="onSubmit()">
+      <mat-form-field appearance="fill">
+        <mat-label>Comentario</mat-label>
+        <input matInput formControlName="contenido" placeholder="Ingrese un comentario" />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Calificacion ( Estrellas 1-5 )</mat-label>
+        <mat-select formControlName="calificacion" required>
+          @for (calificacionEstrellas of calificacionEstrellas; track calificacionEstrellas) {
+            <mat-option [value]="calificacionEstrellas">
+              {{ calificacionEstrellas }}
+            </mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Fecha</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="fecha" placeholder=“Fecha“/>
+        <mat-hint>DD/MM/YYYY</mat-hint>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>User/Propietario</mat-label>
+        <mat-select formControlName="user_id" required>
+          @for (u of listaUsers; track u.user_id) {
+            <mat-option [value]="u.user_id">
+              {{ u.nombre }}
+            </mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Producto</mat-label>
+        <mat-select formControlName="producto_id" required>
+          @for (u of listaProductos; track u.producto_id) {
+            <mat-option [value]="u.producto_id">
+              {{ u.nombre }}
+            </mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+
+
+      <button type="submit" mat-raised-button color="primary">Registrar</button>
+    </form>
+  </mat-card-content>
+</mat-card>
+

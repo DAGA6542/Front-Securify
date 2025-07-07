@@ -1,0 +1,26 @@
+<mat-card class="example-card">
+  <mat-card-title>Formulario de Imagen de producto</mat-card-title>
+  <mat-card-content>
+    <form [formGroup]="imagenproductoForm" class="form-container"  (ngSubmit)="onSubmit()">
+      <mat-form-field appearance="fill">
+        <mat-label>Imagen</mat-label>
+        <input matInput formControlName="urlImagen" placeholder="Ingrese la url de imagen" />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Producto</mat-label>
+        <mat-select formControlName="producto_id" required>
+          @for (c of listaProductos; track c.producto_id) {
+            <mat-option [value]="c.producto_id">
+              {{ c.nombre }}
+            </mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+
+
+      <button type="submit" mat-raised-button color="primary">Registrar</button>
+    </form>
+  </mat-card-content>
+</mat-card>
+

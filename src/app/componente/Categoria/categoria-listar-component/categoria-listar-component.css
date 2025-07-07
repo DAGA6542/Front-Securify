@@ -1,0 +1,80 @@
+/* src/app/categoria/categoria-list/categoria-list.component.css */
+
+.mat-elevation-z8 {
+  /* Sobrescribe la elevación por defecto si es demasiado fuerte */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* Sombra más sutil */
+  border-radius: 8px; /* Bordes redondeados para toda la tabla/contenedor */
+  overflow: hidden; /* Asegura que la sombra y el borde redondeado se vean bien con el contenido */
+  background-color: #fff; /* Asegura un fondo blanco para la tabla */
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse; /* Mantiene un colapso limpio de bordes */
+}
+
+/* Estilo para los encabezados de la tabla */
+th.mat-header-cell {
+  background-color: #f2f2f2; /* Fondo ligeramente gris para el encabezado */
+  color: #555; /* Texto gris más oscuro */
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.85em;
+  padding: 12px 16px; /* Espaciado interno */
+  border-bottom: 1px solid #e0e0e0; /* Borde inferior suave */
+}
+
+/* Estilo para las celdas de datos */
+td.mat-cell {
+  padding: 10px 16px; /* Espaciado interno */
+  border-bottom: 1px solid #eee; /* Borde inferior más claro */
+  color: #333;
+}
+
+/* Estilo para las filas (alternando colores para mejor legibilidad) */
+.mat-row {
+  background-color: #fff; /* Fondo blanco por defecto */
+}
+
+.mat-row:nth-child(odd) {
+  background-color: #fdfdfd; /* Blanco roto para filas impares */
+}
+
+/* Efecto hover en las filas */
+.mat-row:hover {
+  background-color: #f0f8ff; /* Un azul muy claro al pasar el ratón */
+  cursor: pointer; /* Opcional: si la fila completa es clickeable para detalles */
+}
+
+/* Estilo para la paginación */
+.mat-paginator {
+  background-color: #fcfcfc; /* Fondo ligeramente diferente para la paginación */
+  border-top: 1px solid #eee; /* Borde superior para separarla de la tabla */
+  padding: 8px 16px; /* Espaciado interno */
+  color: #555;
+  font-size: 0.9em;
+}
+
+/* Estilos para los botones de paginación si quieres personalizarlos aún más */
+.mat-paginator-navigation-next,
+.mat-paginator-navigation-previous,
+.mat-paginator-navigation-first,
+.mat-paginator-navigation-last {
+  /* Aquí puedes aplicar tus estilos .btn o personalizar */
+  color: var(--primary-color); /* Color de acento para los íconos de navegación */
+  border-radius: 4px;
+}
+
+.mat-paginator-range-label,
+.mat-paginator-page-size {
+  color: #666;
+}
+
+/* Ajustes para el texto de la cabecera de la tabla */
+p {
+  font-size: 1.5em; /* Tamaño de fuente para el título */
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 15px;
+  text-align: center; /* Centrar el título */
+}

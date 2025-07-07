@@ -1,38 +1,38 @@
 import {inject, Injectable} from '@angular/core';
 import {Observable, Subject} from 'rxjs';
-import {environments} from '../../environments/environments';
 import {HttpClient} from '@angular/common/http';
 import {Orden} from '../model/orden';
+import {environment} from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class OrdenService {
 
-  private url: string = environments.apiUrl;
+  private url: string = environment.apiURL;
   private httpClient: HttpClient = inject(HttpClient);
   private listaCambio: Subject<Orden[]> = new Subject<Orden[]>();
 
   constructor() { }
 
   list(): Observable<any>{
-    return this.httpClient.get<Orden[]>(this.url + "orden/listaorden");
+    return this.httpClient.get<Orden[]>(this.url + "orden/listaordenes");
   }
 
   listId(id: number): Observable<any> {
     console.log(this.url + "orden/buscaorden/"+ id);
-    return this.httpClient.get<Orden>(this.url+"orden/buscaorden/"+id);
+    return this.httpClient.get<Orden>(this.url+"orden/listaorden/"+id);
   }
   insert(orden:Orden){
     console.log(orden);
-    return this.httpClient.post(this.url+"orden/insertorden", orden);
+    return this.httpClient.post(this.url+"orden/insertarorden", orden);
   }
 
   update(orden: Orden): Observable<any>{
-    return this.httpClient.put(this.url + "orden/editorden", orden);
+    return this.httpClient.put(this.url + "orden/actualizarorden", orden);
   }
   delete(id: number): Observable<any>{
-    return this.httpClient.delete(this.url + "orden/deletecat/" + id);
+    return this.httpClient.delete(this.url + "orden/deleteorden/" + id);
   }
   setList(listaNueva: Orden[]) {
     this.listaCambio.next(listaNueva); //envia la nueva lista a los suscriptores

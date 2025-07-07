@@ -1,0 +1,20 @@
+<p>producto-nuevo-edit-component works!</p>
+
+<mat-card class="example-card">
+  <mat-card-title>Actualizar imagen producto</mat-card-title>
+  <mat-card-content>
+    <form [formGroup]="imagenproductoForm" class="form-container"  (ngSubmit)="onSubmit()">
+      <mat-form-field appearance="fill">
+        <mat-label>Url imagen</mat-label>
+        <input  matInput  formControlName="urlImagen" placeholder="Ingrese url del producto" />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Producto</mat-label>
+        <input matInput formControlName="producto_id" readonly />
+      </mat-form-field>
+
+      <button type="submit" mat-raised-button color="primary">Registrar</button>
+    </form>
+  </mat-card-content>
+</mat-card>
