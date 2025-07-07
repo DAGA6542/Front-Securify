@@ -70,7 +70,7 @@ export class TiendaRegistrarComponent {
       tienda.descripcion = this.tiendaForm.controls['descripcion'].value;
 
       const userSeleccionado = new User();
-      userSeleccionado.user_id = this.tiendaForm.value.user_id;
+      userSeleccionado.id = this.tiendaForm.value.user_id;
       tienda.user_id = userSeleccionado;
 
       console.log("Producto a enviar:", tienda);

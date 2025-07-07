@@ -107,7 +107,7 @@ export class ComentarioRegistrarComponent {
       comentario.fecha = this.comentarioForm.controls['fecha'].value;
 
       const userSeleccionado = new User();
-      userSeleccionado.user_id = this.comentarioForm.value.user_id;
+      userSeleccionado.id = this.comentarioForm.value.user_id;
       comentario.user_id = userSeleccionado;
 
       const productoSeleccionado = new Producto();

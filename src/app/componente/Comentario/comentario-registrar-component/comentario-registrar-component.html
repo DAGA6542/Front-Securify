@@ -31,8 +31,8 @@
       <mat-form-field appearance="fill">
         <mat-label>User/Propietario</mat-label>
         <mat-select formControlName="user_id" required>
-          @for (u of listaUsers; track u.user_id) {
-            <mat-option [value]="u.user_id">
+          @for (u of listaUsers; track u.id) {
+            <mat-option [value]="u.id">
               {{ u.nombre }}
             </mat-option>
           }

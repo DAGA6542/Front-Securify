@@ -76,7 +76,7 @@ export class TiendaNuevoEditComponent {
         this.tiendaForm.patchValue({
           nombre:data.nombre,
           descripcion:data.descripcion,
-          user_id: data.user_id ? data.user_id.user_id : null
+          user_id: data.user_id ? data.user_id.id : null
         });
       })
     }
@@ -91,7 +91,7 @@ export class TiendaNuevoEditComponent {
       tienda.descripcion = this.tiendaForm.value.descripcion;
 
       const userTienda = new User();
-      userTienda.user_id = this.tiendaForm.value.user_id;
+      userTienda.id = this.tiendaForm.value.user_id;
       tienda.user_id = userTienda;
 
       if(!this.edicion){

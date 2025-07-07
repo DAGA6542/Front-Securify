@@ -91,7 +91,7 @@ export class OrdenRegistrarComponent {
       orden.estado = this.ordenForm.controls['estado'].value;
 
       const userSeleccionado = new User();
-      userSeleccionado.user_id = this.ordenForm.value.user_id;
+      userSeleccionado.id = this.ordenForm.value.user_id;
       orden.user_id = userSeleccionado;
 
       console.log("Orden a enviar:", orden);

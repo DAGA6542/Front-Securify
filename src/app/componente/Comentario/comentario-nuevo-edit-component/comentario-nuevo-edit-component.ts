@@ -90,7 +90,7 @@ export class ComentarioNuevoEditComponent {
         this.comentarioForm.patchValue({
           contenido:data.contenido,
           calificacion:data.calificacion,
-          user_id: data.user_id ? data.user_id.user_id : null,
+          user_id: data.user_id ? data.user_id.id : null,
           producto_id: data.producto_id ? data.producto_id.producto_id : null
         });
       })
@@ -106,7 +106,7 @@ export class ComentarioNuevoEditComponent {
       comentario.calificacion = this.comentarioForm.value.calificacion;
 
       const userComentario = new User();
-      userComentario.user_id = this.comentarioForm.value.user_id;
+      userComentario.id = this.comentarioForm.value.user_id;
       comentario.user_id = userComentario;
 
       const productoComentario = new Producto();

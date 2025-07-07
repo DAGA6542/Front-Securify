@@ -85,7 +85,7 @@ export class OrdenNuevoEditComponent {
         this.ordenForm.patchValue({
           fecha:data.fecha,
           estado:data.estado,
-          user_id: data.user_id ? data.user_id.user_id : null
+          user_id: data.user_id ? data.user_id.id : null
         });
       })
     }
@@ -100,7 +100,7 @@ export class OrdenNuevoEditComponent {
       orden.estado = this.ordenForm.value.estado;
 
       const userOrden = new User();
-      userOrden.user_id = this.ordenForm.value.user_id;
+      userOrden.id = this.ordenForm.value.user_id;
       orden.user_id = userOrden;
 
       if(!this.edicion){
