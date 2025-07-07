@@ -19,10 +19,13 @@ import {
   ImagenproductoRegistrarComponent
 } from './componente/ImagenProducto/imagenproducto-registrar-component/imagenproducto-registrar-component';
 import {UserListarComponent} from './componente/user-listar-component/user-listar-component';
+import {Login} from './componente/login/login';
+import {App} from './app';
 
 export const routes: Routes = [
   {path: '', component: HomeComponent, pathMatch: 'full'},
   {path: 'categorias', component: CategoriaListarComponent},
+
   {path: 'edit-categoria/:id', component: CategoriaNuevoEditComponent},
   {path: 'post-categoria', component: CategoriaRegistrarComponent},
   {path: 'productos', component: ProductoListarComponent},
@@ -35,4 +38,8 @@ export const routes: Routes = [
   {path: 'edit-tienda/:id', component: TiendaNuevoEditComponent},
   {path: 'post-tienda', component: TiendaRegistrarComponent},
   {path: 'users', component: UserListarComponent},
+  {path: 'login', component: Login},
+  {path: '', component: Login, pathMatch: 'full'},
+  {path: 'app', component: App},
+
 ];

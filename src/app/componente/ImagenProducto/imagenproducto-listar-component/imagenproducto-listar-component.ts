@@ -33,8 +33,6 @@ import {ImagenproductoService} from '../../../services/imagenproducto-service';
       MatSort,
       MatHeaderRow,
       MatRow,
-      DatePipe,
-      MatSortHeader,
       MatButton,
       RouterLink
     ],
