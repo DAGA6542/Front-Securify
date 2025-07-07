@@ -1,0 +1,50 @@
+<p>tienda-registrar-component works!</p>
+
+<mat-card class="example-card">
+  <mat-card-title>Form registro de Pagos</mat-card-title>
+  <mat-card-content>
+    <form [formGroup]="pagoForm" class="form-container"  (ngSubmit)="onSubmit()">
+
+      <mat-form-field appearance="fill">
+        <mat-label>Metodo</mat-label>
+        <mat-select formControlName="metodo" required>
+          @for (metodoSeleccionado of metodoSeleccionado; track metodoSeleccionado) {
+            <mat-option [value]="metodoSeleccionado">
+              {{ metodoSeleccionado }}
+            </mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Monto</mat-label>
+        <input matInput formControlName="monto" placeholder="Ingrese un monto" />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Fecha</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="fecha" placeholder=“Fecha“/>
+        <mat-hint>DD/MM/YYYY</mat-hint>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>#Orden</mat-label>
+        <mat-select formControlName="orden_id" required>
+          @for (u of listaOrdenes; track u.orden_id) {
+            <mat-option [value]="u.orden_id">
+              {{ u.orden_id }}
+            </mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+
+
+      <button type="submit" mat-raised-button color="primary">Registrar</button>
+    </form>
+  </mat-card-content>
+</mat-card>
+
+
+

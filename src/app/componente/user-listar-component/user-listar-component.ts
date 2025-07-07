@@ -42,7 +42,7 @@ import {UserService} from '../../services/user-service';
 export class UserListarComponent {
 
   lista: User[]=[];
-  displayedColumns: string[]=['user_id', 'nombre', 'apellido', 'username', 'password', 'email','Accion01', 'Accion02'];
+  displayedColumns: string[]=['id', 'nombre', 'apellido', 'username', 'password', 'email','Accion01', 'Accion02'];
   dataSource: MatTableDataSource<User> = new MatTableDataSource<User>();
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;

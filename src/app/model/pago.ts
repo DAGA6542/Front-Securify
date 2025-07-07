@@ -1,7 +1,9 @@
+import {Orden} from './orden';
+
 export class Pago {
   pago_id: number;
   metodo: string;
   monto: number;
   fecha: Date = new Date();
-  orden_id: number;
+  orden_id: Orden;
 }

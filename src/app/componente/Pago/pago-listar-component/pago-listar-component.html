@@ -1,0 +1,67 @@
+
+<p>| Lista de Pagos |</p>
+<div class="mat-elevation-z8">
+  <table mat-table [dataSource]="dataSource" matSort>
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="pago_id">
+      <th mat-header-cell *matHeaderCellDef> idPago </th>
+      <td mat-cell *matCellDef="let element"> {{element.pago_id }} </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="metodo">
+      <th mat-header-cell *matHeaderCellDef> Metodo </th>
+      <td mat-cell *matCellDef="let element"> {{element.metodo}} </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="monto">
+      <th mat-header-cell *matHeaderCellDef> Monto </th>
+      <td mat-cell *matCellDef="let element"> {{element.monto}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="fecha">
+      <th mat-header-cell *matHeaderCellDef> Fecha </th>
+      <td mat-cell *matCellDef="let element"> {{element.fecha|date:'dd/MM/yyyy'}} </td>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="orden_id">
+      <th mat-header-cell *matHeaderCellDef> #Orden </th>
+      <td mat-cell *matCellDef="let element"> {{element.orden_id.orden_id}} </td>
+    </ng-container>
+
+
+    <ng-container matColumnDef="Accion01">
+      <th mat-header-cell *matHeaderCellDef> Update </th>
+      <td mat-cell *matCellDef="let element">
+        <button mat-raised-button color="primary"
+                [routerLink]="['/edit-pago', element.pago_id ]">
+          <span class="material-icons">update</span>
+        </button>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Accion02">
+      <th mat-header-cell *matHeaderCellDef> Delete </th>
+      <td mat-cell *matCellDef="let element">
+        <button mat-raised-button color="primary"
+                (click)="eliminar(element.pago_id)">
+          <span class="material-icons">Delete</span>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                 showFirstLastButtons
+                 aria-label="Select page of periodic elements">
+  </mat-paginator>
+</div>
+
+
+

@@ -14,7 +14,7 @@ export class LoginService {
 
   login(requestDto: RequestDto): Observable<any> {
     console.log("Enviando:", requestDto)
-    return this.http.post(this.url + "/securify/authenticate", requestDto,
+    return this.http.post(this.url + "auth/authenticate", requestDto,
       {observe: 'response'}).pipe(map((response) => {
         const body = response.body;
         console.log("Body:", body)

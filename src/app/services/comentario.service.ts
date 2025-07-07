@@ -16,23 +16,23 @@ export class ComentarioService {
   constructor() { }
 
   list(): Observable<any>{
-    return this.httpClient.get<Comentario[]>(this.url + "comentario/listacomentario");
+    return this.httpClient.get<Comentario[]>(this.url + "comentario/listacomentarios");
   }
 
   listId(id: number): Observable<any> {
     console.log(this.url + "comentario/buscacomentario/"+ id);
-    return this.httpClient.get<Comentario>(this.url+"comentario/buscacomentario/"+id);
+    return this.httpClient.get<Comentario>(this.url+"comentario/listacomentario/"+id);
   }
   insert(comentario:Comentario){
     console.log(comentario);
-    return this.httpClient.post(this.url+"comentario/insertcomentario", comentario);
+    return this.httpClient.post(this.url+"comentario/insertarcomentario", comentario);
   }
 
   update(comentario: Comentario): Observable<any>{
-    return this.httpClient.put(this.url + "comentario/editcomentario", comentario);
+    return this.httpClient.put(this.url + "comentario/actualizarcomentario", comentario);
   }
   delete(id: number): Observable<any>{
-    return this.httpClient.delete(this.url + "categoria/deletecat/" + id);
+    return this.httpClient.delete(this.url + "comentario/deletecomentario/" + id);
   }
   setList(listaNueva: Comentario[]) {
     this.listaCambio.next(listaNueva); //envia la nueva lista a los suscriptores
