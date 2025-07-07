@@ -1,0 +1,62 @@
+<mat-toolbar class="nav-bar"  >
+  <mat-toolbar-row>
+    <div class="nav-logo">
+      <img class="securify" src="assets/logo.jpg" alt="logo">
+    </div>
+
+    <span class="brand-title"> Securify </span>
+    @if (esUsuario() || esAdministrador() ){
+
+      <span class="spacer"></span>
+
+      <a class="nav-link" [routerLink]="'/categorias'">Categoria</a>
+      <a class="nav-link" [routerLink]="'/productos'">Productos</a>
+      <a class="nav-link" [routerLink]="'/tiendas'">Tiendas</a>
+      <a class="nav-link" [routerLink]="'/comentarios'">Comentarios</a>
+    }
+
+    <!-- Enlaces -->
+
+    @if (esAdministrador()) {
+      <a class="nav-link" [routerLink]="'/edit-categoria'">Editar Categoria</a>
+      <a class="nav-link" [routerLink]="'/post-categoria'">Registrar Categoria</a>
+      <a class="nav-link" [routerLink]="'/users'">Users</a>}
+
+    @if (esUsuario()) {
+
+      <a class="nav-link" [routerLink]="'/detalleorden'">Orden</a>
+      <a class="nav-link" [routerLink]="'/categoria'">Categoría</a>
+      <a class="nav-link" [routerLink]="'/post-pago'">Registra Pago</a>
+    }
+
+    @if (esVendedor()) {
+
+      <a class="nav-link" [routerLink]="'/post-producto'">Registrar Producto</a>
+      <a class="nav-link" [routerLink]="'/edit-imagenproducto'">Editar Imagen Producto</a>
+      <a class="nav-link" [routerLink]="'/post-imagenproducto'">Registrar Imagen Producto</a>
+      <a class="nav-link" [routerLink]="'/imagenproducto'">Imagen Producto</a>
+      <a class="nav-link" [routerLink]="'/pagos'">Pagos</a>
+    }
+    @if (esUsuario() || esAdministrador() || esVendedor()) {
+    <a class="nav-link" [routerLink]="'/ordenes'">Ordenes</a>
+
+    <a class="nav-link" [routerLink]="'/detalles'">Lista Detalles</a>
+
+    <a class="nav-link" [routerLink]="'/post-comentario'">Registra Comentario</a>
+    <a class="nav-link" [routerLink]="'/post-orden'">Registra Orden</a>
+
+    }
+
+    @if (esAdministrador() || esVendedor()) {
+      <a class="nav-link" [routerLink]="'/edit-tienda'">Añadir Tienda</a>
+      <a class="nav-link" [routerLink]="'/post-tienda'">Registrar Tienda</a>
+      <a class="nav-link" [routerLink]="'/post-tienda'">Lista Detalles</a>
+      <a class="nav-link" [routerLink]="'/post-detalleorden'">Registra Detalle</a>
+
+    }
+
+    @if (esUsuario() || esAdministrador()|| esVendedor()) {
+      <a class="nav-link logout-link" [routerLink]="'/login'">Logout</a>
+    }
+  </mat-toolbar-row>
+</mat-toolbar>

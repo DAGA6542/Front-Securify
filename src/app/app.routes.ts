@@ -47,9 +47,10 @@ import {
 } from './componente/DetalleOrden/detalleorden-registrar-component/detalleorden-registrar-component';
 
 export const routes: Routes = [
-  {path: '', component: HomeComponent, pathMatch: 'full'},
+  {path: 'login', component: Login},
+  {path: '', component: Login, pathMatch: 'full'},
+  {path: 'home', component: HomeComponent},
   {path: 'categorias', component: CategoriaListarComponent},
-
   {path: 'edit-categoria/:id', component: CategoriaNuevoEditComponent},
   {path: 'post-categoria', component: CategoriaRegistrarComponent},
   {path: 'productos', component: ProductoListarComponent},
@@ -62,9 +63,6 @@ export const routes: Routes = [
   {path: 'edit-tienda/:id', component: TiendaNuevoEditComponent},
   {path: 'post-tienda', component: TiendaRegistrarComponent},
   {path: 'users', component: UserListarComponent},
-  {path: 'login', component: Login},
-  {path: '', component: Login, pathMatch: 'full'},
-  {path: 'app', component: App},
   {path: 'comentarios', component: ComentarioListarComponent},
   {path: 'edit-comentario/:id', component: ComentarioNuevoEditComponent},
   {path: 'post-comentario', component: ComentarioRegistrarComponent},

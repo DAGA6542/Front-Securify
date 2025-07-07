@@ -35,8 +35,7 @@ import {User} from '../../../model/user';
     MatInputModule,//add
     MatDatepickerModule, // add
     MatNativeDateModule,
-    RouterLink,
-    MatOption,
+
   ],
   templateUrl: './tienda-nuevo-edit-component.html',
   styleUrl: './tienda-nuevo-edit-component.css'

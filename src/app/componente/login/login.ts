@@ -68,7 +68,7 @@ export class Login {
           this.router.navigate(['/login']);
         }
       });
-      this.router.navigate(['/app']);
+      this.router.navigate(['/home']);
     }else{
       console.log("Login form invalid");
       alert("Login form invalid");
