@@ -8,30 +8,21 @@ import {environments} from '../../environments/environments';
   providedIn: 'root'
 })
 export class CategoriaService {
-  private url: string = environments.apiUrl;
+  private url = "http://localhost:8080/categoria";
   private httpClient: HttpClient = inject(HttpClient);
   private listaCambio: Subject<Categoria[]> = new Subject<Categoria[]>();
 
   constructor() { }
-
-  list(): Observable<any>{
-    return this.httpClient.get<Categoria[]>(this.url + "categoria/listacategoria");
+  list():Observable<any> {
+    return this.httpClient.get<Categoria[]>(this.url+"/listacategoria")
   }
 
-  listId(id: number): Observable<any> {
-    console.log(this.url + "categoria/buscacategoria/"+ id);
-    return this.httpClient.get<Categoria>(this.url+"categoria/buscacategoria/"+id);
-  }
   insert(categoria:Categoria){
     console.log(categoria);
-    return this.httpClient.post(this.url+"categoria/insertcategoria", categoria);
-  }
-
-  update(categoria: Categoria): Observable<any>{
-    return this.httpClient.put(this.url + "categoria/editcategoria", categoria);
+    return this.httpClient.post(this.url+"/insertarcategoria", categoria)
   }
   delete(id: number): Observable<any>{
-    return this.httpClient.delete(this.url + "categoria/deletecat/" + id);
+    return this.httpClient.delete(this.url + "/eliminarcategoria/" + id);
   }
   setList(listaNueva: Categoria[]) {
     this.listaCambio.next(listaNueva); //envia la nueva lista a los suscriptores
@@ -44,6 +35,9 @@ export class CategoriaService {
       next: (data) => this.setList(data), //envia la nueva lista a los suscriptores
       error: (err) => console.error('Error actualizando lista', err)
     });
+  }
+  update(categoria: Categoria) {
+    return this.httpClient.put(this.url + "/actualizarcategoria", categoria);
   }
 }
 

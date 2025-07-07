@@ -1,0 +1,22 @@
+<form [formGroup]="formulario" (ngSubmit)="onSubmit()" class="form-consultorio">
+
+  <mat-form-field appearance="fill">
+    <mat-label>ID (opcional)</mat-label>
+    <input matInput type="number" formControlName="categoria_id" />
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Nombre</mat-label>
+    <input matInput formControlName="nombre" />
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Descripcion</mat-label>
+    <input matInput formControlName="descripcion" />
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" type="submit">
+    {{ esEditar ? 'Actualizar' : 'Guardar' }}
+  </button>
+</form>
+

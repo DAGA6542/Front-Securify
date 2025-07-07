@@ -1,4 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
+html, body {
+  height: 100%;
+  background-image: url("assets/Fondo.jpg");
+  background-size: cover;       /* Para que se ajuste a toda la pantalla */
+  background-position: center;  /* Centra la imagen */
+  background-repeat: no-repeat; /* Evita que se repita */
+
+}
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+/*html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }*/

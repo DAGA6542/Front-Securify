@@ -1,0 +1,54 @@
+.custom-sidenav {
+  width: 250px;
+  background: #f0f0f0;
+}
+
+mat-expansion-panel {
+  background: white;
+  margin: 5px 0;
+  border-radius: 8px; /* Bordes redondeados */
+  overflow: hidden; /* Asegura que los bordes sean consistentes */
+}
+
+mat-expansion-panel-header {
+  align-items: center; /* Alinea el texto y los iconos del header */
+}
+
+mat-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+mat-sidenav-container {
+  height: 100vh; /* Altura completa de la ventana */
+  width: 100vw; /* Ancho completo de la ventana */
+}
+
+mat-sidenav {
+  width: 250px; /* Ajusta el ancho del menú lateral */
+}
+
+mat-nav-list {
+  display: flex;
+  flex-direction: column;
+  padding: 0; /* Elimina el padding predeterminado */
+}
+
+a.mat-list-item {
+  display: flex;
+  align-items: center; /* Centra verticalmente los iconos y el texto */
+  justify-content: flex-start; /* Alinea los elementos hacia la izquierda */
+  padding: 10px 16px; /* Ajusta el espacio interno */
+  font-size: 16px; /* Tamaño del texto */
+  text-decoration: none; /* Elimina el subrayado */
+}
+
+a.mat-list-item mat-icon {
+  margin-right: 8px; /* Espacio entre el icono y el texto */
+  font-size: 20px; /* Ajusta el tamaño del icono */
+}
+
+.mat-expansion-panel-content {
+  padding: 0; /* Elimina padding adicional dentro del panel */
+}
